@@ -3,7 +3,8 @@ class Display {
     this.height = height;
     this.width = width;
     this.scale = scale;
-    this.exampleImage = new Image(0, 0, 735, 908, 17, 9, 4, 0)
+    this.exampleImage = new SingleImage(735, 908, 17, 9, 4, 0)
+    this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 22, 11, 4, 0)
 
     cameraPos = vec2(this.height,this.width);
     cameraScale = this.scale;
@@ -19,8 +20,10 @@ class Display {
 
     // example image 
     this.exampleImage.render();
+    this.exampleAnimation.render();
   }
 
   update() {
+    this.exampleAnimation.update();
   }
 }
