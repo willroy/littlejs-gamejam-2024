@@ -4,6 +4,8 @@ setShowSplashScreen(true);
 
 var display
 
+var imageSources = ['assets/example.png']
+
 function gameInit()
 {
   display = new Display(16, 8, 48)
@@ -11,6 +13,7 @@ function gameInit()
 
 function gameUpdate()
 {
+  display.update()
 }
 
 function gameUpdatePost()
@@ -27,4 +30,4 @@ function gameRenderPost()
 }
 
 // start engine
-engineInit(gameInit, gameUpdate, gameUpdatePost, gameRender, gameRenderPost);
+engineInit(gameInit, gameUpdate, gameUpdatePost, gameRender, gameRenderPost, imageSources);

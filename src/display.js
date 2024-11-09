@@ -20,4 +20,7 @@ class Display {
     // example image 
     this.exampleImage.render();
   }
+
+  update() {
+  }
 }
