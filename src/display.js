@@ -3,8 +3,10 @@ class Display {
     this.height = height;
     this.width = width;
     this.scale = scale;
+
     this.exampleImage = new SingleImage(735, 908, 17, 9, 4, 0)
     this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 22, 11, 4, 0)
+    
     this.world = new World();
 
     cameraPos = vec2(this.height,this.width);

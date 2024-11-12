@@ -1,18 +1,21 @@
 class Entity extends EngineObject {
-  constructor(x, y, world) {
+  constructor(pos, size, rgba, world, image=null) {
     super()
-    this.pos = vec2(x, y)
-    this.size = vec2(1, 1)
+    this.pos = pos
+    this.size = size
+    this.rgba = rgba
     this.world = world
+    this.image = image
   }
 
   render() {
-    super.render();
-
-    drawRect(this.pos, this.size, hsl(0, 0, .2), 0, 0);
+    if ( this.image != null ) {
+      this.image.render();
+    } else {
+      drawRect(this.pos, this.size, this.rgba, 0, 0);
+    }
   }
 
   update() {
-    super.update();
   }
 }

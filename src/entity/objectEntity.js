@@ -1,9 +1,6 @@
 class ObjectEntity extends Entity {
-  constructor(x, y, world) {
-    super(x, y, world);
-
-    this.setCollision(true, true);
-    this.mass = 10;
+  constructor(pos, size, rgba, world) {
+    super(pos, size, rgba, world);
   }
 
   render() {

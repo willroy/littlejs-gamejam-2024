@@ -1,9 +1,6 @@
 class ControllerEntity extends Entity {
-  constructor(x, y, world) {
-    super(x, y, world);
-
-    this.setCollision(true, true);
-    this.mass = 0;
+  constructor(pos, size, rgba, world) {
+    super(pos, size, rgba, world);
   }
 
   render() {
@@ -13,9 +10,19 @@ class ControllerEntity extends Entity {
   update() {
     super.update();
 
-    if ( keyIsDown("ArrowUp") ) { this.pos.y = this.pos.y + 0.07 }
-    if ( keyIsDown("ArrowDown") ) { this.pos.y = this.pos.y - 0.07 }
-    if ( keyIsDown("ArrowLeft") ) { this.pos.x = this.pos.x - 0.07 }
-    if ( keyIsDown("ArrowRight") ) { this.pos.x = this.pos.x + 0.07 }
+    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+0.07) ) { this.pos.y = this.pos.y + 0.07 }
+    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.pos.y = this.pos.y - 0.07 }
+    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.pos.x = this.pos.x - 0.07 }
+    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.pos.x = this.pos.x + 0.07 }
+
+  }
+
+  collisonCheck(newX, newY) {
+    for (var i=0; i<this.world.entities.length;i++) {
+      if (this.world.entities[i] !== this && isOverlapping(vec2(newX, newY), this.size, this.world.entities[i].pos, this.world.entities[i].size)) {
+        return false;
+      }
+    }
+    return true;
   }
 }
