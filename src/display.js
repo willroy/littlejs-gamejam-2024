@@ -4,13 +4,13 @@ class Display {
     this.width = width;
     this.scale = scale;
 
-    this.exampleImage = new SingleImage(735, 908, 17, 9, 4, 0)
-    this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 22, 11, 4, 0)
-    
-    this.world = new World();
-
     cameraPos = vec2(this.height,this.width);
     cameraScale = this.scale;
+
+    this.loaded = new World(1);
+
+    this.exampleImage = new SingleImage(735, 908, 17, 9, 4, 0)
+    this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 22, 11, 4, 0)
   }
 
   render() {
@@ -19,15 +19,15 @@ class Display {
 
     drawTextScreen('littlejs template', vec2(mainCanvasSize.x/2, 70), 40, hsl(1, 1, 1), 5, hsl(0, 0, 0));
 
+    this.loaded.render();
+
     this.exampleImage.render();
     this.exampleAnimation.render();
-
-    this.world.render();
   }
 
   update() {
-    this.exampleAnimation.update();
+    this.loaded.update();
 
-    this.world.update();
+    this.exampleAnimation.update();
   }
 } 

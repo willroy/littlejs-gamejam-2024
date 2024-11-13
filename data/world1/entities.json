@@ -1,0 +1,37 @@
+[
+	{
+		"id": 0,
+		"type": "ControllerEntity",
+		"pos": [10,11],
+		"size": [1,1],
+		"colour": [0.1,0.1,0.1,1]
+	},
+	{
+		"id": 1,
+		"type": "ObjectEntity",
+		"pos": [6,8],
+		"size": [1,15],
+		"colour": [0.1,0.5,0.1,1]
+	},
+	{
+		"id": 2,
+		"type": "ObjectEntity",
+		"pos": [15.75,15],
+		"size": [21,1],
+		"colour": [0.1,0.5,0.1,1]
+	},
+	{
+		"id": 3,
+		"type": "ObjectEntity",
+		"pos": [25.5,8],
+		"size": [1,15],
+		"colour": [0.1,0.5,0.1,1]
+	},
+	{
+		"id": 4,
+		"type": "ObjectEntity",
+		"pos": [15.75,1],
+		"size": [21,1],
+		"colour": [0.1,0.5,0.1,1]
+	}
+]

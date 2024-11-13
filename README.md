@@ -1,4 +1,7 @@
-Run steps:
+debug tools
 
-1) Download
-2) Run python3 -m http.server in dir and go to localhost:8000 or open index.html in browser
+esc to enable debug overlay
+
+when in debug overlay:
+
+click and drag to move entitys
