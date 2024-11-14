@@ -9,8 +9,8 @@ class Display {
 
     this.loaded = new World(1);
 
-    this.exampleImage = new SingleImage(735, 908, 17, 9, 4, 0)
-    this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 22, 11, 4, 0)
+    this.exampleImage = new SingleImage(735, 908, 30, 3, 4, 0)
+    this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 32, 11, 4, 0)
   }
 
   render() {

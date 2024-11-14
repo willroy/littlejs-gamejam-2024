@@ -1,6 +1,7 @@
 class World {
   constructor(id) {
     this.id = id;
+    this.pos = vec2(0,0);
     this.entities = this.loadEntities();
   }
 
