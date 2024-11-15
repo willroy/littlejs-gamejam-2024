@@ -9,27 +9,26 @@ class World {
     fetch('data/world'+this.id+'/entities.json')
     .then((response) => response.json())
     .then((json) => {
-      var newEntities = [];
-
-      for ( var i = 0; i < json.length; i++ ) {
-        const id = json[i].id;
-        const type = json[i].type;
-        const pos = json[i].pos;
-        const size = json[i].size;
-        const colour = json[i].colour;
-        if ( json[i].type == "ControllerEntity" ) {
-          newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
-        }
-        else if ( json[i].type == "ObjectEntity" ) {
-          newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
-        }
-        else if ( json[i].type == "PhysicsObjectEntity" ) {
-          newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
-        }
-      }
-
-      this.entities = newEntities;
+      this.createEntities(json);
     });
+  }
+
+  createEntities(json) {
+    var newEntities = [];
+
+    for ( var i = 0; i < json.length; i++ ) {
+      const id = json[i].id;
+      const type = json[i].type;
+      const pos = json[i].pos;
+      const size = json[i].size;
+      const colour = json[i].colour;
+
+      if ( json[i].type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
+      else if ( json[i].type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
+      else if ( json[i].type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
+    }
+
+    this.entities = newEntities;
   }
 
   render() {
@@ -47,5 +46,33 @@ class World {
       }
       return true;
     }
+  }
+
+  uploadJSON(jsonString) {
+    var json = JSON.parse(jsonString);
+
+    this.createEntities(json);
+  }
+
+  downloadJSON() {
+    var entitiesList = [];
+
+    for ( var i = 0; i < this.entities.length; i++ ) {
+      const id = i;
+      const type = this.entities[i].constructor.name;
+      const pos = [this.entities[i].pos.x, this.entities[i].pos.y];
+      const size = [this.entities[i].size.x, this.entities[i].size.y];
+      const colour = this.entities[i].colour;
+
+      entitiesList[i] = {"id": id, "type": type, "pos": pos, "size": size, "colour": colour}
+    }
+
+    var entitiesJSON = JSON.stringify(entitiesList);
+
+    var a = document.createElement("a");
+    var file = new Blob([entitiesJSON], {type: 'text/plain'});
+    a.href = URL.createObjectURL(file);
+    a.download = 'entities.json';
+    a.click();
   }
 }

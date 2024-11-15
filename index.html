@@ -4,6 +4,7 @@
 <meta name=apple-mobile-web-app-capable content=yes>
 <meta name=mobile-web-app-capable content=yes>
 </head><body>
+<input type="file" id="uploadWorld" value="Import" hidden/>
 
 <!-- LittleJS Engine -->
 <script src=lib/engineDebug.js?208></script>
@@ -29,5 +30,24 @@
 <script src=src/display/world.js?208></script>
 <script src=src/display/menu.js?208></script>
 <script src=src/display/cutscene.js?208></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	$(document).keyup(function (e) {
+	  if (e.key == "_") $("#uploadWorld").click(); 
+    if (e.key == "+") display.loaded.downloadJSON();
+	});  
+
+	$('#uploadWorld').change(function() {
+    var files = document.getElementById('uploadWorld').files;
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      display.loaded.uploadJSON(reader.result);
+    }
+
+    reader.readAsText(files[0]);
+  }); 
+</script>
 </body>
 </html>
