@@ -19,8 +19,10 @@ class ControllerEntity extends Entity {
   }
 
   collisonCheck(newX, newY) {
+    const collisionTypes = ["ObjectEntity"]
     for (var i=0; i<this.world.entities.length;i++) {
-      if (this.world.entities[i] !== this && isOverlapping(vec2(newX, newY), this.size, this.world.entities[i].pos, this.world.entities[i].size)) {
+      var entityType = this.world.entities[i].constructor.name;
+      if (this.world.entities[i] !== this && collisionTypes.includes(entityType) && isOverlapping(vec2(newX, newY), this.size, this.world.entities[i].pos, this.world.entities[i].size)) {
         return false;
       }
     }

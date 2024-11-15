@@ -14,5 +14,6 @@ class Entity extends EngineObject {
   }
 
   update() {
+    super.update();
   }
 }

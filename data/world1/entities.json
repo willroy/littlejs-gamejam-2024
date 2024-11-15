@@ -33,5 +33,12 @@
 		"pos": [15.75,1],
 		"size": [21,1],
 		"colour": [0.1,0.5,0.1,1]
+	},
+	{
+		"id": 5,
+		"type": "PhysicsObjectEntity",
+		"pos": [7,11],
+		"size": [1,1],
+		"colour": [0.1,0.2,0.6,1]
 	}
 ]

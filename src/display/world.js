@@ -23,6 +23,9 @@ class World {
         else if ( json[i].type == "ObjectEntity" ) {
           newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
         }
+        else if ( json[i].type == "PhysicsObjectEntity" ) {
+          newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
+        }
       }
 
       this.entities = newEntities;
