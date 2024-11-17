@@ -14,19 +14,20 @@ class Display {
   }
 
   render() {
+    drawTextScreen('littlejs template', vec2(mainCanvasSize.x/2, 70), 40, hsl(1, 1, 1), 5, hsl(0, 0, 0));
+    this.exampleImage.render();
+    this.exampleAnimation.render();
+    
+    //overlay
+    drawRect(vec2(0, 32), vec2(100, 34), rgb(0.212, 0.325, 0.412));
+    drawRect(vec2(-16, 0), vec2(44, 100), rgb(0.212, 0.325, 0.412));
+    drawRect(vec2(32, 0), vec2(12, 100), rgb(0.212, 0.325, 0.412));
+    drawRect(vec2(0, -32), vec2(100, 66), rgb(0.212, 0.325, 0.412));
+
     //background
     drawRect(vec2(16, 8), vec2(20, 14), hsl(0, 0, .9), 0, 0);
 
     this.loaded.render();
-
-    //overlay
-    drawRect(vec2(0, 32), vec2(100, 34), rgb(0.212, 0.325, 0.412), 0, false, false, overlayContext);
-    drawRect(vec2(-16, 0), vec2(44, 100), rgb(0.212, 0.325, 0.412), 0, false, false, overlayContext);
-    drawRect(vec2(32, 0), vec2(12, 100), rgb(0.212, 0.325, 0.412), 0, false, false, overlayContext);
-    drawRect(vec2(0, -32), vec2(100, 66), rgb(0.212, 0.325, 0.412), 0, false, false, overlayContext);
-    drawTextScreen('littlejs template', vec2(mainCanvasSize.x/2, 70), 40, hsl(1, 1, 1), 5, hsl(0, 0, 0));
-    this.exampleImage.render();
-    this.exampleAnimation.render();
   }
 
   update() {
