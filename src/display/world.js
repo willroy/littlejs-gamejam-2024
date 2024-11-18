@@ -3,6 +3,10 @@ class World {
     this.id = id;
     this.pos = vec2(0,0);
     this.entities = this.loadEntities();
+
+    // debug stuff
+
+    this.debug_placedEntity = false;
   }
 
   loadEntities() {
@@ -44,11 +48,30 @@ class World {
   update() {
     for ( entity in this.entites ) { entity.update(); }
 
+    // debug stuff
+
     if (debug && debugOverlay) {
+      if (!keyIsDown("KeyI")) this.debug_placedEntity = false;
+      
       for (var i = 0; i < this.entities.length; i++) {
         if (isOverlapping(mousePos, vec2(0.1,0.1), this.entities[i].pos, this.entities[i].size)) {
-          if (mouseIsDown(0)) this.entities[i].pos = mousePos;
+          if (mouseIsDown(0)) {
+            this.entities[i].originalPos.x = mousePos.x-this.pos.x;
+            this.entities[i].originalPos.y = mousePos.y-this.pos.y;
+          } 
+          else if (keyIsDown("KeyH")) this.entities[i].size.x = this.entities[i].size.x - 0.1;
+          else if (keyIsDown("KeyJ")) this.entities[i].size.x = this.entities[i].size.x + 0.1;
+          else if (keyIsDown("KeyV")) this.entities[i].size.y = this.entities[i].size.y - 0.1;
+          else if (keyIsDown("KeyB")) this.entities[i].size.y = this.entities[i].size.y + 0.1;
+          else if (keyIsDown("KeyO")) {
+            this.entities[i].destroy();
+            this.entities.splice(i, 1);
+          }
         }
+      }
+      if (keyIsDown("KeyI") && !this.debug_placedEntity) {
+        this.debug_placedEntity = true;
+        this.entities.push(new ObjectEntity(vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0), this));
       }
     }
   }
