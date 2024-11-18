@@ -1,0 +1,9 @@
+[
+	{
+		"id": 0,
+		"type": "ControllerEntity",
+		"pos": [10,11],
+		"size": [1,1],
+		"rgba": [0.1,0.1,0.1,1]
+	}
+]

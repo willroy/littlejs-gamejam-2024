@@ -5,7 +5,7 @@ class ControllerEntity extends Entity {
   }
 
   render() {
-    drawRect(this.pos, this.size, this.rgba, 0, 0);
+    drawRect(this.pos, this.size, this.rgba, 0);
   }
 
   update() {

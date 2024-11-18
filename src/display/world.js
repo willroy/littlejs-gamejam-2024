@@ -3,6 +3,7 @@ class World {
     this.id = id;
     this.pos = vec2(0,0);
     this.entities = this.loadEntities();
+    this.background = new SingleImage(5477, 5359, 0, 0, 80, 1)
 
     // debug stuff
 
@@ -43,31 +44,43 @@ class World {
 
   render() {
     for ( entity in this.entites ) { entity.render(); }
+
+    this.background.render();
   }
 
   update() {
+    this.background.posX = this.pos.x;
+    this.background.posY = this.pos.y;
+
     for ( entity in this.entites ) { entity.update(); }
 
     // debug stuff
 
     if (debug && debugOverlay) {
       if (!keyIsDown("KeyI")) this.debug_placedEntity = false;
-      
+
+      var closestObject = null;
+      let bestDistance = Infinity;
+
       for (var i = 0; i < this.entities.length; i++) {
-        if (isOverlapping(mousePos, vec2(0.1,0.1), this.entities[i].pos, this.entities[i].size)) {
-          if (mouseIsDown(0)) {
-            this.entities[i].originalPos.x = mousePos.x-this.pos.x;
-            this.entities[i].originalPos.y = mousePos.y-this.pos.y;
-          } 
-          else if (keyIsDown("KeyH")) this.entities[i].size.x = this.entities[i].size.x - 0.1;
-          else if (keyIsDown("KeyJ")) this.entities[i].size.x = this.entities[i].size.x + 0.1;
-          else if (keyIsDown("KeyV")) this.entities[i].size.y = this.entities[i].size.y - 0.1;
-          else if (keyIsDown("KeyB")) this.entities[i].size.y = this.entities[i].size.y + 0.1;
-          else if (keyIsDown("KeyO")) {
-            this.entities[i].destroy();
-            this.entities.splice(i, 1);
-          }
+        const distance = mousePos.distanceSquared(this.entities[i].pos);
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            closestObject = this.entities[i];
         }
+      }
+
+      if (mouseIsDown(0)) {
+        closestObject.originalPos.x = mousePos.x-this.pos.x;
+        closestObject.originalPos.y = mousePos.y-this.pos.y;
+      } 
+      else if (keyIsDown("KeyH")) closestObject.size.x = closestObject.size.x - 0.1;
+      else if (keyIsDown("KeyJ")) closestObject.size.x = closestObject.size.x + 0.1;
+      else if (keyIsDown("KeyV")) closestObject.size.y = closestObject.size.y - 0.1;
+      else if (keyIsDown("KeyB")) closestObject.size.y = closestObject.size.y + 0.1;
+      else if (keyIsDown("KeyO")) {
+        closestObject.destroy();
+        this.entities.splice(i, 1);
       }
       if (keyIsDown("KeyI") && !this.debug_placedEntity) {
         this.debug_placedEntity = true;
