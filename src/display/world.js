@@ -26,6 +26,12 @@ class World {
       if ( json[i].type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
       else if ( json[i].type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
       else if ( json[i].type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
+      else if ( json[i].type == "ActionEntity" ) {
+        const actionTrigger = json[i].actionTrigger;
+        const action = json[i].action;
+
+        newEntities.push(new ActionEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this, actionTrigger, action));
+      }
     }
 
     this.entities = newEntities;
@@ -44,7 +50,6 @@ class World {
           if (mouseIsDown(0)) this.entities[i].pos = mousePos;
         }
       }
-      return true;
     }
   }
 

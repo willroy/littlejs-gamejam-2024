@@ -26,13 +26,20 @@
 <script src=src/entity/entity.js?208></script>
 <script src=src/entity/objectEntity.js?208></script>
 <script src=src/entity/physicsObjectEntity.js?208></script>
+<script src=src/entity/actionEntity.js?208></script>
 <script src=src/entity/controllerEntity.js?208></script>
 <script src=src/display/world.js?208></script>
 <script src=src/display/menu.js?208></script>
 <script src=src/display/cutscene.js?208></script>
 
+<script src=actions/actionExample.js?208></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+  const actions = {
+    ActionExample
+  }
+
 	$(document).keyup(function (e) {
 	  if (e.key == "_") $("#uploadWorld").click(); 
     if (e.key == "+") display.loaded.downloadJSON();
