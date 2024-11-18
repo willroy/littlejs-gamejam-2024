@@ -80,7 +80,7 @@ class World {
       else if (keyIsDown("KeyB")) closestObject.size.y = closestObject.size.y + 0.1;
       else if (keyIsDown("KeyO")) {
         closestObject.destroy();
-        this.entities.splice(i, 1);
+        this.entities.splice(closestObject.id, 1);
       }
       if (keyIsDown("KeyI") && !this.debug_placedEntity) {
         this.debug_placedEntity = true;
