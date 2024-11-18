@@ -43,9 +43,9 @@ class World {
   }
 
   render() {
-    for ( entity in this.entites ) { entity.render(); }
-
     this.background.render();
+
+    for ( entity in this.entites ) { entity.render(); }
   }
 
   update() {
@@ -107,7 +107,7 @@ class World {
     for ( var i = 0; i < this.entities.length; i++ ) {
       const id = i;
       const type = this.entities[i].constructor.name;
-      const pos = [this.entities[i].pos.x, this.entities[i].pos.y];
+      const pos = [this.entities[i].originalPos.x, this.entities[i].originalPos.y];
       const size = [this.entities[i].size.x, this.entities[i].size.y];
       const rgba = [this.entities[i].rgba.r, this.entities[i].rgba.g, this.entities[i].rgba.b, this.entities[i].rgba.a];
 
