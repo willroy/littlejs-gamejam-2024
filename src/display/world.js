@@ -25,16 +25,16 @@ class World {
       const type = json[i].type;
       const pos = json[i].pos;
       const size = json[i].size;
-      const colour = json[i].colour;
+      const rgba = json[i].rgba;
 
-      if ( json[i].type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
-      else if ( json[i].type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
-      else if ( json[i].type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this));
+      if ( json[i].type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
+      else if ( json[i].type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
+      else if ( json[i].type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
       else if ( json[i].type == "ActionEntity" ) {
         const actionTrigger = json[i].actionTrigger;
         const action = json[i].action;
 
-        newEntities.push(new ActionEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(colour[0],colour[1],colour[2],colour[3]), this, actionTrigger, action));
+        newEntities.push(new ActionEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this, actionTrigger, action));
       }
     }
 
@@ -71,13 +71,19 @@ class World {
       }
       if (keyIsDown("KeyI") && !this.debug_placedEntity) {
         this.debug_placedEntity = true;
-        this.entities.push(new ObjectEntity(vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0), this));
+        this.entities.push(new ObjectEntity(vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0,1), this));
       }
     }
   }
 
   uploadJSON(jsonString) {
     var json = JSON.parse(jsonString);
+
+    for ( var i = 0; i < this.entities.length; i++ ) {
+      this.entities[i].destroy();
+    }
+
+    this.entities = [];
 
     this.createEntities(json);
   }
@@ -90,9 +96,16 @@ class World {
       const type = this.entities[i].constructor.name;
       const pos = [this.entities[i].pos.x, this.entities[i].pos.y];
       const size = [this.entities[i].size.x, this.entities[i].size.y];
-      const colour = this.entities[i].colour;
+      const rgba = [this.entities[i].rgba.r, this.entities[i].rgba.g, this.entities[i].rgba.b, this.entities[i].rgba.a];
 
-      entitiesList[i] = {"id": id, "type": type, "pos": pos, "size": size, "colour": colour}
+      if ( type == "ActionEntity" ) {
+        const actionTrigger = this.entities[i].actionTrigger;
+        const action = this.entities[i].action;
+        entitiesList[i] = {"id": id, "type": type, "pos": pos, "size": size, "rgba": rgba, "actionTrigger": actionTrigger, "action": action}
+      }
+      else {
+        entitiesList[i] = {"id": id, "type": type, "pos": pos, "size": size, "rgba": rgba}
+      }
     }
 
     var entitiesJSON = JSON.stringify(entitiesList);
