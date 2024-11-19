@@ -7,7 +7,11 @@ class World {
 
     // debug stuff
 
-    this.debug_placedEntity = false;
+    this.debug_placedEntity = false;  
+    
+    this.actions = {
+      "HelloAction": new HelloAction()
+    }
   }
 
   loadEntities() {
@@ -22,11 +26,16 @@ class World {
     var newEntities = [];
 
     for ( var i = 0; i < json.length; i++ ) {
-      const id = json[i].id;
-      const type = json[i].type;
-      const pos = json[i].pos;
-      const size = json[i].size;
-      const rgba = json[i].rgba;
+      const ent = json[i];
+      const name = ent.name;
+      const id = ent.id;
+      const type = ent.type;
+      const pos = ent.pos;
+      const size = ent.size;
+      const rgba = ent.rgba;
+      if (name){
+        console.log("Building "+name);
+      }
 
       if ( json[i].type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
       else if ( json[i].type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
@@ -35,14 +44,22 @@ class World {
         const actionTrigger = json[i].actionTrigger;
         const action = json[i].action;
 
-        newEntities.push(new ActionEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this, actionTrigger, action));
+        newEntities.push(new ActionEntity(
+          name,
+          vec2(pos[0],pos[1]), 
+          vec2(size[0],size[1]), 
+          rgb(rgba[0],rgba[1],rgba[2],rgba[3]), 
+          this, 
+          actionTrigger, 
+          this.actions[action])
+        );
       }
     }
 
     this.entities = newEntities;
   }
 
-  render() {
+  render() {  
     this.background.render();
 
     for ( entity in this.entites ) { entity.render(); }

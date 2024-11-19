@@ -193,6 +193,16 @@
 		"type":"ObjectEntity",
 		"pos":[3.499583333333314,28.972083333333394],
 		"size":[0.6000000000000001,7.89999999999999],
-		"rgba":[0,0,0,1]
+		"rgba":[0,1,0,1]
+	},
+	{
+		"id":28,
+		"name": "hello",
+		"type":"ActionEntity",
+		"pos":[	15.0, 8.0],
+		"size":[1.0,1.0],
+		"rgba":[1,0,0,1],
+		"actionTrigger": "interact",
+		"action": "HelloAction"
 	}
 ]
