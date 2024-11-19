@@ -8,18 +8,20 @@ class ActionEntity extends Entity {
   }
 
   render() {
-    super.render();
+    this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y)
+    drawRect(this.pos, this.size, this.rgba, 0);
   }
 
   update() {
     super.update();
 
+    if (!keyIsDown("KeyE")) this.triggered = false;
+
     if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) {
       action.trigger();
     }  
     if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) {
-      // var action = new actions[this.action](this);
-      this.action.trigger();
+      new this.action(this.world, this).trigger();
     }
     // if ( this.actionTrigger == "proximity" ) this.proximityTrigger(); 
   }
@@ -38,7 +40,6 @@ class ActionEntity extends Entity {
 
   interactTrigger() {
     const collisionTypes = ["ControllerEntity"]
-    console.log("Interact?? " + this.name);
     for (var i=0; i<this.world.entities.length;i++) {
       var entityType = this.world.entities[i].constructor.name;
       var isAnotherEntity = this.world.entities[i] !== this
@@ -52,7 +53,6 @@ class ActionEntity extends Entity {
         }
       }
     }
-    console.log("Nope!")
 
     return false;
   }

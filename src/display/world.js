@@ -2,7 +2,7 @@ class World {
   constructor(id) {
     this.id = id;
     this.pos = vec2(0,0);
-    this.entities = this.loadEntities();
+    this.entities = this.loadData();
     this.background = new SingleImage(5477, 5359, 0, 0, 80, 1)
 
     // debug stuff
@@ -10,25 +10,32 @@ class World {
     this.debug_placedEntity = false;  
     
     this.actions = {
-      "HelloAction": new HelloAction()
+      "HelloAction": HelloAction
     }
   }
 
-  loadEntities() {
+  loadData() {
     fetch('data/world'+this.id+'/entities.json')
     .then((response) => response.json())
     .then((json) => {
       this.createEntities(json);
     });
+    fetch('data/world'+this.id+'/dialog.json')
+    .then((response) => response.json())
+    .then((json) => {
+      this.dialog = json;
+    });
   }
 
   createEntities(json) {
     var newEntities = [];
+    
+    var jsonEntities = json.toSorted((a, b) => b.zindex - a.zindex);
 
-    for ( var i = 0; i < json.length; i++ ) {
-      const ent = json[i];
+    for ( var i = 0; i < jsonEntities.length; i++ ) {
+      const ent = jsonEntities[i];
       const name = ent.name;
-      const id = ent.id;
+      const zindex = ent.zindex;
       const type = ent.type;
       const pos = ent.pos;
       const size = ent.size;
@@ -37,12 +44,12 @@ class World {
         console.log("Building "+name);
       }
 
-      if ( json[i].type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
-      else if ( json[i].type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
-      else if ( json[i].type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
-      else if ( json[i].type == "ActionEntity" ) {
-        const actionTrigger = json[i].actionTrigger;
-        const action = json[i].action;
+      if ( type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
+      else if ( type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
+      else if ( type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
+      else if ( type == "ActionEntity" ) {
+        const actionTrigger = ent.actionTrigger;
+        const action = ent.action;
 
         newEntities.push(new ActionEntity(
           name,
