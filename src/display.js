@@ -7,7 +7,7 @@ class Display {
     cameraPos = vec2(this.height,this.width);
     cameraScale = this.scale;
 
-    this.loaded = new World(2);
+    this.loaded = new World(0);
 
     this.exampleImage = new SingleImage(735, 908, 30, 3, 4, 0)
     this.exampleAnimation = new Animation(10, 10, 70, 70, 735, 908, 32, 11, 4, 0)

@@ -70,6 +70,8 @@ class World {
         }
       }
 
+      if ( closestObject == null ) return;
+
       if (mouseIsDown(0)) {
         closestObject.originalPos.x = mousePos.x-this.pos.x;
         closestObject.originalPos.y = mousePos.y-this.pos.y;
