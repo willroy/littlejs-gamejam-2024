@@ -2,7 +2,9 @@ class World {
   constructor(id) {
     this.id = id;
     this.pos = vec2(0,0);
-    this.entities = this.loadData();
+    this.frozen = false;
+    this.entities = [];
+    this.loadData();
     this.background = new SingleImage(5477, 5359, 0, 0, 80, 1)
 
     // debug stuff
@@ -12,6 +14,13 @@ class World {
     this.actions = {
       "HelloAction": HelloAction
     }
+  }
+
+  reposition(xdiff, ydiff){
+     if (this.frozen) return
+      
+     this.pos.x = this.pos.x + xdiff
+     this.pos.y = this.pos.y + ydiff
   }
 
   loadData() {

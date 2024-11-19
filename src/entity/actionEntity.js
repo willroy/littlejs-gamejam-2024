@@ -15,8 +15,6 @@ class ActionEntity extends Entity {
   update() {
     super.update();
 
-    if (!keyIsDown("KeyE")) this.triggered = false;
-
     if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) {
       action.trigger();
     }  
