@@ -1,0 +1,30 @@
+{
+	"leverpiece": {
+		"name": "Missing Lever Piece",
+		"description": "Missing lever piece for the fountain lever."
+	},
+	"shedkey": {
+		"name": "Shed Key",
+		"description": "Key for Dave's Shed."
+	},
+	"wood1": {
+		"name": "Piece of wood",
+		"description": "Missing piece of wood for the bridge."
+	},
+	"wood2": {
+		"name": "Piece of wood",
+		"description": "Missing piece of wood for the bridge."
+	},
+	"wood3": {
+		"name": "Piece of wood",
+		"description": "Missing piece of wood for the bridge."
+	},
+	"wood4": {
+		"name": "Piece of wood",
+		"description": "Missing piece of wood for the bridge."
+	},
+	"wood5": {
+		"name": "Piece of wood",
+		"description": "Missing piece of wood for the bridge."
+	}
+}

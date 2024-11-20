@@ -1,7 +1,7 @@
 [
 	{
 		"zindex":0,
-		"name": "hedgehog",
+		"name":"hedgehog",
 		"type":"ControllerEntity",
 		"pos":[20.49208333333333,7.434583333333334],
 		"size":[1,1],
@@ -317,5 +317,15 @@
 		"rgba":[1,0,0,1],
 		"actionTrigger": "interact",
 		"action": "HelloAction"
+	},
+	{
+		"zindex":1000,
+		"name": "wood1",
+		"type":"ActionEntity",
+		"pos":[	17.0, 3.0],
+		"size":[0.5,0.5],
+		"rgba":[1,1,0,1],
+		"actionTrigger": "collide",
+		"action": "ItemPickupAction"
 	}
 ]

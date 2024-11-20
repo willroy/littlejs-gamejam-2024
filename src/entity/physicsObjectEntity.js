@@ -1,6 +1,6 @@
 class PhysicsObjectEntity extends Entity {
-  constructor(pos, size, rgba, world) {
-    super(pos, size, rgba, world);
+  constructor(name, pos, size, rgba, world) {
+    super(name, pos, size, rgba, world);
   }
 
   render() {

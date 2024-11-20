@@ -1,11 +1,21 @@
 class ControllerEntity extends Entity {
-  constructor(pos, size, rgba, world) {
-    super(pos, size, rgba, world);
+  constructor(name, pos, size, rgba, world) {
+    super(name, pos, size, rgba, world);
     this.pos = vec2(15,8)
+
+    this.inventory = [];
   }
 
   render() {
     drawRect(this.pos, this.size, this.rgba, 0);
+
+    if ( this.inventory.length > 0 ) {
+      for ( var i = 0; i < this.inventory.length; i++ ) {
+        var itemHandle = this.inventory[i];
+        drawTextScreen(this.world.items[itemHandle]["name"], vec2(200, (60*i)+100), 16);
+        drawTextScreen(this.world.items[itemHandle]["description"], vec2(200, (60*i)+120), 12);
+      }
+    }
   }
 
   update() {

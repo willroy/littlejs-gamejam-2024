@@ -1,6 +1,6 @@
 class DialogEntity extends Entity {
   constructor(lines, triggerEntity, world) {
-    super(triggerEntity.pos, triggerEntity.size, triggerEntity.rgba, world);
+    super("", triggerEntity.pos, triggerEntity.size, triggerEntity.rgba, world);
     this.triggerEntity = triggerEntity;
     this.lines = lines;
     this.line = -1;

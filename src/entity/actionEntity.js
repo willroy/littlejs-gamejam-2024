@@ -1,7 +1,6 @@
 class ActionEntity extends Entity {
   constructor(name, pos, size, rgba, world, actionTrigger, action) {
-    super(pos, size, rgba, world);
-    this.name = name;
+    super(name, pos, size, rgba, world);
     this.actionTrigger = actionTrigger;
     this.action = action;
     this.triggered = false;
@@ -22,7 +21,12 @@ class ActionEntity extends Entity {
     // if ( !this.triggered && this.actionTrigger == "proximity" && this.proximityTrigger() ) triggerAction = true;
 
     if ( triggerAction ) {
-      new this.action(this.world, this).trigger();
+      if ( this.action.prototype.constructor.name == "ItemPickupAction" ) {
+        new this.action(this.world, this, this.name).trigger();
+      }
+      else {
+        new this.action(this.world, this).trigger();
+      }
     }
   }
 
