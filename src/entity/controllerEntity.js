@@ -11,10 +11,10 @@ class ControllerEntity extends Entity {
   update() {
     super.update();
 
-    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+0.07) ) { this.world.pos.y = this.world.pos.y - 0.07 }
-    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.world.pos.y = this.world.pos.y + 0.07 }
-    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.world.pos.x = this.world.pos.x + 0.07 }
-    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.world.pos.x = this.world.pos.x - 0.07 }
+    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+0.07) ) { this.world.reposition(0, -0.07) }
+    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.world.reposition(0, 0.07) }
+    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.world.reposition(0.07, 0) }
+    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.world.reposition(-0.07, 0) }
 
   }
 
