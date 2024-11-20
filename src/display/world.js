@@ -49,9 +49,8 @@ class World {
       const pos = ent.pos;
       const size = ent.size;
       const rgba = ent.rgba;
-      if (name){
-        console.log("Building "+name);
-      }
+
+      if (name) console.log("Building "+name);
 
       if ( type == "ControllerEntity" ) newEntities.push(new ControllerEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
       else if ( type == "ObjectEntity" ) newEntities.push(new ObjectEntity(vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
@@ -60,15 +59,7 @@ class World {
         const actionTrigger = ent.actionTrigger;
         const action = ent.action;
 
-        newEntities.push(new ActionEntity(
-          name,
-          vec2(pos[0],pos[1]), 
-          vec2(size[0],size[1]), 
-          rgb(rgba[0],rgba[1],rgba[2],rgba[3]), 
-          this, 
-          actionTrigger, 
-          this.actions[action])
-        );
+        newEntities.push(new ActionEntity( name, vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this, actionTrigger, this.actions[action]));
       }
     }
 

@@ -10,9 +10,8 @@ class Entity extends EngineObject {
 
   render() {
     this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y)
-    if (debug && debugOverlay) {
-      drawRect(this.pos, this.size, this.rgba, 0);
-    }
+    
+    if (debug && debugOverlay) drawRect(this.pos, this.size, this.rgba, 0);
   }
 
   update() {
