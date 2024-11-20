@@ -15,20 +15,26 @@ class ActionEntity extends Entity {
   update() {
     super.update();
 
-    if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) {
-      action.trigger();
-    }  
-    if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) {
+    var triggerAction = false;
+
+    if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) triggerAction = true;
+    if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) triggerAction = true;
+    // if ( !this.triggered && this.actionTrigger == "proximity" && this.proximityTrigger() ) triggerAction = true;
+
+    if ( triggerAction ) {
       new this.action(this.world, this).trigger();
     }
-    // if ( this.actionTrigger == "proximity" ) this.proximityTrigger(); 
   }
 
   collideTrigger() {
     const collisionTypes = ["ControllerEntity"]
     for (var i=0; i<this.world.entities.length;i++) {
       var entityType = this.world.entities[i].constructor.name;
-      if (this.world.entities[i] !== this && collisionTypes.includes(entityType) && isOverlapping(vec2(this.pos.x, this.pos.y), this.size, this.world.entities[i].pos, this.world.entities[i].size)) {
+      var isAnotherEntity = this.world.entities[i] !== this;
+      var isSupportedEntityType = collisionTypes.includes(entityType);
+      var overlaps = isOverlapping(vec2(this.pos.x, this.pos.y), this.size, this.world.entities[i].pos, this.world.entities[i].size);
+
+      if (isAnotherEntity && isSupportedEntityType && overlaps) {
         return true;
       }
     }
@@ -40,15 +46,12 @@ class ActionEntity extends Entity {
     const collisionTypes = ["ControllerEntity"]
     for (var i=0; i<this.world.entities.length;i++) {
       var entityType = this.world.entities[i].constructor.name;
-      var isAnotherEntity = this.world.entities[i] !== this
-      var isSupportedEntityType = collisionTypes.includes(entityType)
-      var overlaps = isOverlapping(vec2(this.pos.x, this.pos.y), this.size, this.world.entities[i].pos, this.world.entities[i].size)
+      var isAnotherEntity = this.world.entities[i] !== this;
+      var isSupportedEntityType = collisionTypes.includes(entityType);
+      var overlaps = isOverlapping(vec2(this.pos.x, this.pos.y), this.size, this.world.entities[i].pos, this.world.entities[i].size);
 
-      if (isAnotherEntity && isSupportedEntityType && overlaps) {
-        if ( keyIsDown("KeyE") ) {
-          console.log("Yup!")
-          return true;
-        }
+      if (isAnotherEntity && isSupportedEntityType && overlaps && keyIsDown("KeyE")) {
+        return true;
       }
     }
 
