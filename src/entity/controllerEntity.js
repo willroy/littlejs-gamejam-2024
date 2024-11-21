@@ -1,6 +1,6 @@
 class ControllerEntity extends Entity {
-  constructor(zindex, name, pos, size, rgba, world) {
-    super(zindex, name, pos, size, rgba, world);
+  constructor(zindex, handle, pos, size, rgba, world) {
+    super(zindex, handle, pos, size, rgba, world);
     this.pos = vec2(15,8)
 
     this.inventory = [];
