@@ -1,8 +1,9 @@
 class DialogEntity extends Entity {
-  constructor(lines, triggerEntity, world) {
-    super("", triggerEntity.pos, triggerEntity.size, triggerEntity.rgba, world);
+  constructor(dialogData, triggerEntity, world) {
+    var colour = rgb().setHex(dialogData.colour)
+    super("", triggerEntity.pos, triggerEntity.size, colour, world);
     this.triggerEntity = triggerEntity;
-    this.lines = lines;
+    this.lines = dialogData.dialog;
     this.line = -1;
     this.eDown = false;
     this.fontSize = 0.5;
@@ -10,6 +11,7 @@ class DialogEntity extends Entity {
 
   render() {
     if (this.eDown && !keyIsDown("KeyE")) {
+      console.log("triggerEntity: " + this.triggerEntity.name)
       this.eDown = false;
 
       if (this.line < this.lines.length) {
@@ -27,7 +29,10 @@ class DialogEntity extends Entity {
 
     if (keyIsDown("KeyE")) this.eDown = true;
 
-    if (!this.eDown && 0 <= this.line && this.line < this.lines.length) drawText(this.lines[this.line], this.pos, this.fontSize, (0, 1, 0, 1), 0.5, this.rgba);
+    if (!this.eDown && 0 <= this.line && this.line < this.lines.length) {
+      var textPos = this.triggerEntity.pos.add(vec2(0.0, 0.5))
+      drawText(this.lines[this.line], textPos, this.fontSize, (0, 1, 0, 1), 0.5, this.rgba);
+    }
   }
 
   update() {

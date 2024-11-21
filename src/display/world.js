@@ -13,7 +13,7 @@ class World {
     this.debug_placedEntity = false;  
     
     this.actions = {
-      "HelloAction": HelloAction,
+      "DialogAction": DialogAction,
       "ItemPickupAction": ItemPickupAction
     }
   }
@@ -67,7 +67,16 @@ class World {
         const actionTrigger = ent.actionTrigger;
         const action = ent.action;
 
-        newEntities.push(new ActionEntity( name, vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this, actionTrigger, this.actions[action]));
+        newEntities.push(
+          new ActionEntity(
+            name, 
+            vec2(pos[0],pos[1]), 
+            vec2(size[0],size[1]), 
+            rgb(rgba[0],rgba[1],rgba[2],rgba[3]), 
+            this, 
+            actionTrigger, 
+            this.actions[action])
+          );
       }
     }
 
