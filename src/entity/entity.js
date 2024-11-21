@@ -1,7 +1,8 @@
 class Entity extends EngineObject {
-  constructor(name, pos, size, rgba, world) {
+  constructor(zindex, handle, pos, size, rgba, world) {
     super()
-    this.name = name;
+    this.zindex = zindex;
+    this.handle = handle;
     this.originalPos = pos;
     this.size = size;
     this.rgba = rgba;

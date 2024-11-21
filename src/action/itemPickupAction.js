@@ -1,12 +1,12 @@
 class ItemPickupAction {
-	constructor(world, triggerEntity, itemHandle) {
-		this.world = world;
+	constructor(triggerEntity) {
 		this.triggerEntity = triggerEntity;
-		this.itemHandle = itemHandle;
+		this.world = this.triggerEntity.world;
+		this.itemHandle = this.triggerEntity.handle;
 	}
 
 	trigger() {
-		var player = this.world.getEntityByName("hedgehog");
+		var player = this.world.getEntityByHandle("hedgehog");
 		player.inventory.push(this.itemHandle);
 		this.triggerEntity.destroy();
 	}

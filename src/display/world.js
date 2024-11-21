@@ -40,7 +40,6 @@ class World {
     .then((response) => response.json())
     .then((json) => {
       this.items = json;
-      console.log(this.items);
     });
   }
 
@@ -51,32 +50,24 @@ class World {
 
     for ( var i = 0; i < jsonEntities.length; i++ ) {
       const ent = jsonEntities[i];
-      const name = ent.name;
       const zindex = ent.zindex;
+      const handle = ent.handle;
       const type = ent.type;
-      const pos = ent.pos;
-      const size = ent.size;
-      const rgba = ent.rgba;
+      const pos = vec2(ent.pos[0],ent.pos[1]);
+      const size = vec2(ent.size[0],ent.size[1]);
+      const rgba = rgb(ent.rgba[0],ent.rgba[1],ent.rgba[2],ent.rgba[3]);
+      const world = this;
 
-      if (name) console.log("Building "+name);
+      if (handle) console.log("Building "+handle);
 
-      if ( type == "ControllerEntity" ) newEntities.push(new ControllerEntity(name, vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
-      else if ( type == "ObjectEntity" ) newEntities.push(new ObjectEntity(name, vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
-      else if ( type == "PhysicsObjectEntity" ) newEntities.push(new PhysicsObjectEntity(name, vec2(pos[0],pos[1]), vec2(size[0],size[1]), rgb(rgba[0],rgba[1],rgba[2],rgba[3]), this));
+      if ( type == "ControllerEntity" ) newEntities.push( new ControllerEntity( zindex, handle, pos, size, rgba, world ) );
+      else if ( type == "ObjectEntity" ) newEntities.push( new ObjectEntity( zindex, handle, pos, size, rgba, world ) );
+      else if ( type == "PhysicsObjectEntity" ) newEntities.push( new PhysicsObjectEntity( zindex, handle, pos, size, rgba, world ) );
       else if ( type == "ActionEntity" ) {
         const actionTrigger = ent.actionTrigger;
-        const action = ent.action;
+        const action = this.actions[ent.action];
 
-        newEntities.push(
-          new ActionEntity(
-            name, 
-            vec2(pos[0],pos[1]), 
-            vec2(size[0],size[1]), 
-            rgb(rgba[0],rgba[1],rgba[2],rgba[3]), 
-            this, 
-            actionTrigger, 
-            this.actions[action])
-          );
+        newEntities.push( new ActionEntity( zindex, handle, pos, size, rgba, world, actionTrigger, action ) );
       }
     }
 
@@ -148,19 +139,22 @@ class World {
     var entitiesList = [];
 
     for ( var i = 0; i < this.entities.length; i++ ) {
-      const id = i;
-      const type = this.entities[i].constructor.name;
-      const pos = [this.entities[i].originalPos.x, this.entities[i].originalPos.y];
-      const size = [this.entities[i].size.x, this.entities[i].size.y];
-      const rgba = [this.entities[i].rgba.r, this.entities[i].rgba.g, this.entities[i].rgba.b, this.entities[i].rgba.a];
+      const ent = this.entities[i];
+      const zindex = ent.zindex;
+      const handle = ent.handle;
+      const type = ent.constructor.name;
+      const pos = [ent.originalPos.x,ent.originalPos.y];
+      const size = [ent.size.x,ent.size.y];
+      const rgba = [ent.rgba.r,ent.rgba.g,ent.rgba.b,ent.rgba.a];
 
       if ( type == "ActionEntity" ) {
         const actionTrigger = this.entities[i].actionTrigger;
-        const action = this.entities[i].action;
-        entitiesList[i] = {"id": id, "type": type, "pos": pos, "size": size, "rgba": rgba, "actionTrigger": actionTrigger, "action": action}
+        const action = this.entities[i].action.prototype.constructor.name;
+
+        entitiesList[i] = {"zindex": zindex, "handle": handle, "type": type, "pos": pos, "size": size, "rgba": rgba, "actionTrigger": actionTrigger, "action": action}
       }
       else {
-        entitiesList[i] = {"id": id, "type": type, "pos": pos, "size": size, "rgba": rgba}
+        entitiesList[i] = {"zindex": zindex, "handle": handle, "type": type, "pos": pos, "size": size, "rgba": rgba}
       }
     }
 
@@ -173,9 +167,9 @@ class World {
     a.click();
   }
 
-  getEntityByName(name) {
+  getEntityByHandle(handle) {
     for ( var i = 0; i < this.entities.length; i++ ) {
-      if ( this.entities[i].name === name ) {
+      if ( this.entities[i].handle === handle ) {
         return this.entities[i];
       }
     }

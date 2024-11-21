@@ -1,6 +1,6 @@
 class ObjectEntity extends Entity {
-  constructor(name, pos, size, rgba, world) {
-    super(name, pos, size, rgba, world);
+  constructor(zindex, handle, pos, size, rgba, world) {
+    super(zindex, handle, pos, size, rgba, world);
   }
 
   render() {
