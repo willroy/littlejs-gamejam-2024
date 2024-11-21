@@ -46,7 +46,7 @@ class World {
   createEntities(json) {
     var newEntities = [];
     
-    var jsonEntities = json.toSorted((a, b) => b.zindex - a.zindex);
+    var jsonEntities = json.toSorted((a, b) => a.zindex - b.zindex);
 
     for ( var i = 0; i < jsonEntities.length; i++ ) {
       const ent = jsonEntities[i];

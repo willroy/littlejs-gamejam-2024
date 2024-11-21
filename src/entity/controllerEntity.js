@@ -3,7 +3,9 @@ class ControllerEntity extends Entity {
     super(zindex, handle, pos, size, rgba, world);
     this.pos = vec2(15,8)
 
-    this.inventory = [];
+    this.inventory = ["wood2", "wood3"];
+    this.inventoryPos = 0;
+    this.droppedItem = false;
   }
 
   render() {
@@ -12,8 +14,10 @@ class ControllerEntity extends Entity {
     if ( this.inventory.length > 0 ) {
       for ( var i = 0; i < this.inventory.length; i++ ) {
         var itemHandle = this.inventory[i];
-        drawTextScreen(this.world.items[itemHandle]["name"], vec2(200, (60*i)+100), 16);
-        drawTextScreen(this.world.items[itemHandle]["description"], vec2(200, (60*i)+120), 12);
+        var colour = rgb(1,1,1);
+        if ( this.inventoryPos == i ) colour = rgb(0.5,1,0.5);
+        drawTextScreen(this.world.items[itemHandle]["name"], vec2(200, (60*i)+100), 16, colour);
+        drawTextScreen(this.world.items[itemHandle]["description"], vec2(200, (60*i)+120), 12, colour);
       }
     }
   }
@@ -25,6 +29,23 @@ class ControllerEntity extends Entity {
     if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.world.reposition(0, 0.07) }
     if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.world.reposition(0.07, 0) }
     if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.world.reposition(-0.07, 0) }
+
+    for ( var i = 0; i < 9; i++ ) {
+      if ( typeof this.inventory[i] !== 'undefined' && keyIsDown("Digit"+(i+1).toString()) ) {
+        this.inventoryPos = i;
+        break;
+      }
+    }
+
+    if ( !keyIsDown("KeyQ") ) this.droppedItem = false;
+    
+    if ( !this.droppedItem && keyIsDown("KeyQ") ) {
+      this.droppedItem = true;
+      var dropPos = this.pos.subtract(this.world.pos);
+      // need to re sort entities list by z index after this
+      this.world.entities.push( new ActionEntity( 0, this.inventory[this.inventoryPos], dropPos, vec2(0.5,0.5), rgb(1,1,0,1), this.world, "interact", this.world.actions["ItemPickupAction"] ) );
+      this.inventory.splice(this.inventoryPos, 1);
+    }
 
   }
 
