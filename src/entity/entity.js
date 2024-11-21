@@ -18,4 +18,15 @@ class Entity extends EngineObject {
   update() {
     super.update();
   }
+
+  toString()
+  {
+      if (debug)
+      {
+          var text = super.toString()
+          text += "\nWorld Position: " + this.originalPos
+
+          return text;
+      }
+  }
 }

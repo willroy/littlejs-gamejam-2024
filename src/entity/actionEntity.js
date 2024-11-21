@@ -47,18 +47,6 @@ class ActionEntity extends Entity {
   }
 
   interactTrigger() {
-    const collisionTypes = ["ControllerEntity"]
-    for (var i=0; i<this.world.entities.length;i++) {
-      var entityType = this.world.entities[i].constructor.name;
-      var isAnotherEntity = this.world.entities[i] !== this;
-      var isSupportedEntityType = collisionTypes.includes(entityType);
-      var overlaps = isOverlapping(vec2(this.pos.x, this.pos.y), this.size, this.world.entities[i].pos, this.world.entities[i].size);
-
-      if (isAnotherEntity && isSupportedEntityType && overlaps && keyIsDown("KeyE")) {
-        return true;
-      }
-    }
-
-    return false;
+    return this.collideTrigger() && keyIsDown("KeyE")
   }
 }
