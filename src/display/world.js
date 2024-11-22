@@ -10,15 +10,7 @@ class World {
 
     // debug stuff
 
-    this.debug_placedEntity = false;  
-    
-    this.actions = {
-      "DialogAction": DialogAction,
-      "ItemPickupAction": ItemPickupAction,
-      "IntroDialougeAction": IntroDialougeAction,
-      "FountainDialougeAction": FountainDialougeAction,
-      "BeaverDialougeAction": BeaverDialougeAction
-    }
+    this.debug_placedEntity = false;
   }
 
   reposition(xdiff, ydiff){
@@ -68,7 +60,7 @@ class World {
       else if ( type == "PhysicsObjectEntity" ) newEntities.push( new PhysicsObjectEntity( zindex, handle, pos, size, rgba, world ) );
       else if ( type == "ActionEntity" ) {
         const actionTrigger = ent.actionTrigger;
-        const action = this.actions[ent.action];
+        const action = actions[ent.action];
 
         newEntities.push( new ActionEntity( zindex, handle, pos, size, rgba, world, actionTrigger, action ) );
       }

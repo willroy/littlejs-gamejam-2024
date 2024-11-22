@@ -45,7 +45,7 @@ class ControllerEntity extends Entity {
       this.droppedItem = true;
       var dropPos = this.pos.subtract(this.world.pos);
       // need to re sort entities list by z index after this
-      this.world.entities.push( new ActionEntity( 0, this.inventory[this.inventoryPos], dropPos, vec2(0.5,0.5), rgb(1,1,0,1), this.world, "interact", this.world.actions["ItemPickupAction"] ) );
+      this.world.entities.push( new ActionEntity( 0, this.inventory[this.inventoryPos], dropPos, vec2(0.5,0.5), rgb(1,1,0,1), this.world, "interact", actions["ItemPickupAction"] ) );
       this.inventory.splice(this.inventoryPos, 1);
     }
 

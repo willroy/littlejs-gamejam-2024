@@ -6,6 +6,8 @@
 </head><body>
 <input type="file" id="uploadWorld" value="Import" hidden/>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <!-- LittleJS Engine -->
 <script src=lib/engineDebug.js?209></script>
 <script src=lib/engineUtilities.js?209></script>
@@ -39,16 +41,53 @@
 <script src=src/entity/controllerEntity.js?209></script>
 
 <!-- Action Classes -->
-<script src="src/actionsGeneric/dialogAction.js?209"></script>
-<script src="src/actionsGeneric/itemPickupAction.js?209"></script>
-
-<script src="src/actionsSpecific/introDialougeAction.js?209"></script>
-<script src="src/actionsSpecific/fountainDialougeAction.js?209"></script>
-<script src="src/actionsSpecific/beaverDialougeAction.js?209"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+  var actionsGeneric = [
+    "DialogAction",
+    "ItemPickupAction",
+  ];
 
+  var actionsSpecific = [
+    "IntroDialougeAction",
+    "FountainDialougeAction",
+    "BeaverDialougeAction",
+  ];
+
+  // i feel like the below should be a crime
+
+  var actions = []
+
+  $( document ).ready(function() {
+    for ( var i = 0; i < actionsGeneric.length; i++ ) {
+      var script = document.createElement('script');
+      var scriptName = actionsGeneric[i].charAt(0).toLowerCase() + actionsGeneric[i].slice(1);
+      script.src = "src/actionsGeneric/"+scriptName+".js?209";
+      document.head.appendChild(script);
+    }
+    for ( var i = 0; i < actionsSpecific.length; i++ ) {
+      var script = document.createElement('script');
+      var scriptName = actionsSpecific[i].charAt(0).toLowerCase() + actionsSpecific[i].slice(1);
+      if ( i == actionsSpecific.length-1 ) {
+        script.onload = function () { createActionsList(); };
+      }
+      script.src = "src/actionsSpecific/"+scriptName+".js?209";
+      document.head.appendChild(script);
+    }
+  });
+
+  function createActionsList() {
+    var actionsTmp = [];
+    actionsTmp.push.apply(actionsTmp, actionsGeneric);
+    actionsTmp.push.apply(actionsTmp, actionsSpecific);
+
+    for ( var i = 0; i < actionsTmp.length; i++ ) {
+      var actionString = actionsTmp[i];
+      actions[actionString] = eval(actionsTmp[i]);
+    }
+  }
+</script>
+
+<script>
 	$(document).keyup(function (e) {
 	  if (e.key == "_") $("#uploadWorld").click(); 
     if (e.key == "+") display.loaded.downloadJSON();
