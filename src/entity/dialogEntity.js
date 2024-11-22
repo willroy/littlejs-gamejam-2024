@@ -38,8 +38,15 @@ class DialogEntity extends Entity {
     if (keyIsDown("KeyE")) this.eDown = true;
 
     if (!this.eDown && 0 <= this.line && this.line < this.lines.length) {
-      var textPos = this.triggerEntity.pos.add(vec2(0.0, 0.5))
-      drawText(this.lines[this.line], textPos, this.fontSize, (0, 1, 0, 1), 0.5, this.rgba);
+      var textPos = this.triggerEntity.pos.add(vec2(0, 1));
+      var textWidth = ( ( 8 * this.fontSize ) * this.lines[this.line].length ) / 16;
+      var textHeight = ( ( 8 * this.fontSize ) ) / 16;
+
+      var boxPos = this.triggerEntity.pos.add(vec2(0, 1.05));
+      var boxPadding = vec2(0.4, 0.6);
+
+      drawRect(boxPos, vec2(textWidth, textHeight).add(boxPadding), this.rgba);
+      drawText(this.lines[this.line], textPos, this.fontSize, (0, 1, 0, 1), 0.1, this.rgba);
     }
   }
 

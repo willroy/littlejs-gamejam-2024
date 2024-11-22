@@ -16,7 +16,8 @@ class World {
       "DialogAction": DialogAction,
       "ItemPickupAction": ItemPickupAction,
       "IntroDialougeAction": IntroDialougeAction,
-      "FountainDialougeAction": FountainDialougeAction
+      "FountainDialougeAction": FountainDialougeAction,
+      "BeaverDialougeAction": BeaverDialougeAction
     }
   }
 

@@ -1,8 +1,15 @@
 {
-  "beaver": {
+  "beaver-dialouge-beforewood": {
     "dialog": [
       "Hello Dude",
       "Find me 5 bits of wood and I can fix the bridge"
+    ],
+    "colour": "165a91"
+  },
+  "beaver-dialouge-afterwood": {
+    "dialog": [
+      "Hello Dude",
+      "Woah! I can fix the bridge now, thanks!"
     ],
     "colour": "165a91"
   },

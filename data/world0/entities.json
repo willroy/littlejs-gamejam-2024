@@ -312,13 +312,13 @@
 	},
 	{
 		"zindex":0,
-		"handle": "beaver",
+		"handle": "beaver-dialouge",
 		"type":"ActionEntity",
 		"pos":[	16.0, -22.0],
 		"size":[1.0,1.0],
 		"rgba":[1,0,0,1],
 		"actionTrigger": "interact",
-		"action": "DialogAction"
+		"action": "BeaverDialougeAction"
 	},
 	{
 		"zindex":0,
