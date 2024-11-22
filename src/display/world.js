@@ -14,7 +14,9 @@ class World {
     
     this.actions = {
       "DialogAction": DialogAction,
-      "ItemPickupAction": ItemPickupAction
+      "ItemPickupAction": ItemPickupAction,
+      "IntroDialougeAction": IntroDialougeAction,
+      "FountainDialougeAction": FountainDialougeAction
     }
   }
 
@@ -26,11 +28,6 @@ class World {
   }
 
   loadData() {
-    fetch('data/world'+this.id+'/entities.json')
-    .then((response) => response.json())
-    .then((json) => {
-      this.createEntities(json);
-    });
     fetch('data/world'+this.id+'/dialog.json')
     .then((response) => response.json())
     .then((json) => {
@@ -40,6 +37,11 @@ class World {
     .then((response) => response.json())
     .then((json) => {
       this.items = json;
+    });
+    fetch('data/world'+this.id+'/entities.json')
+    .then((response) => response.json())
+    .then((json) => {
+      this.createEntities(json);
     });
   }
 

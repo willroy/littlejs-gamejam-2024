@@ -6,7 +6,9 @@ class DialogEntity extends Entity {
     this.lines = dialogData.dialog;
     this.line = -1;
     this.eDown = false;
+    if ( this.triggerEntity.actionTrigger == "collide" ) this.eDown = true;
     this.fontSize = 0.5;
+    this.selfDestruct = false;
   }
 
   render() {
@@ -23,6 +25,13 @@ class DialogEntity extends Entity {
         this.destroy();
         this.triggerEntity.triggered = false;
         this.world.frozen = false;
+
+        if ( this.selfDestruct ) {
+          this.world.entities = this.world.entities.filter((ent) => ent != this.triggerEntity);
+          this.triggerEntity.destroy();
+        }
+
+        return;
       }
     }
 

@@ -5,5 +5,23 @@
       "Find me 5 bits of wood and I can fix the bridge"
     ],
     "colour": "165a91"
+  },
+  "intro-dialouge": {
+    "dialog": [
+      "Where are my friends?"
+    ],
+    "colour": "165a91"
+  },
+  "fountain-dialouge-empty": {
+    "dialog": [
+      "Hmmm, I can see something at the bottom, but I can't reach it..."
+    ],
+    "colour": "165a91"
+  },
+  "fountain-dialouge-full": {
+    "dialog": [
+      "I can reach it now!"
+    ],
+    "colour": "165a91"
   }
 }
