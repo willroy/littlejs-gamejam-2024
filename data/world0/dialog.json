@@ -1,31 +1,31 @@
 {
-  "beaver-dialouge-beforewood": {
+  "beaver-dialog-beforewood": {
     "dialog": [
       "Hello Dude",
       "Find me 5 bits of wood and I can fix the bridge"
     ],
     "colour": "165a91"
   },
-  "beaver-dialouge-afterwood": {
+  "beaver-dialog-afterwood": {
     "dialog": [
       "Hello Dude",
       "Woah! I can fix the bridge now, thanks!"
     ],
     "colour": "165a91"
   },
-  "intro-dialouge": {
+  "intro-dialog": {
     "dialog": [
       "Where are my friends?"
     ],
     "colour": "165a91"
   },
-  "fountain-dialouge-empty": {
+  "fountain-dialog-empty": {
     "dialog": [
       "Hmmm, I can see something at the bottom, but I can't reach it..."
     ],
     "colour": "165a91"
   },
-  "fountain-dialouge-full": {
+  "fountain-dialog-full": {
     "dialog": [
       "I can reach it now!"
     ],

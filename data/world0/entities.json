@@ -282,33 +282,33 @@
 	},
 	{
 		"zindex":0,
-		"handle":"intro-dialouge",
+		"handle":"intro-dialog",
 		"type":"ActionEntity",
 		"pos":[15,8],
 		"size":[1,1],
 		"rgba":[1,0,0,1],
 		"actionTrigger": "collide",
-		"action": "IntroDialougeAction"
+		"action": "IntroDialogAction"
 	},
 	{
 		"zindex":0,
-		"handle":"fountain-dialouge",
+		"handle":"fountain-dialog",
 		"type":"ActionEntity",
 		"pos":[25,0.7],
 		"size":[0.7,0.7],
 		"rgba":[1,0,0,1],
 		"actionTrigger": "interact",
-		"action": "FountainDialougeAction"
+		"action": "FountainDialogAction"
 	},
 	{
 		"zindex":0,
-		"handle": "beaver-dialouge",
+		"handle": "beaver-dialog",
 		"type":"ActionEntity",
 		"pos":[	16.0, -22.0],
 		"size":[1.0,1.0],
 		"rgba":[1,0,0,1],
 		"actionTrigger": "interact",
-		"action": "BeaverDialougeAction"
+		"action": "BeaverDialogAction"
 	},
 	{
 		"zindex":0,

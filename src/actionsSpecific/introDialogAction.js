@@ -1,11 +1,11 @@
-class FountainDialougeAction {
+class IntroDialogAction {
     constructor(triggerEntity) {
       this.triggerEntity = triggerEntity;
     }
 
     trigger() {
         var dialogAction = new DialogAction(this.triggerEntity);
-        dialogAction.dialogHandle = "fountain-dialouge-empty";
+        dialogAction.triggerEntitySelfDestruct = true;
         dialogAction.trigger();
     }
 }
