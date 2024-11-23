@@ -1,7 +1,15 @@
-debug tools
+Game Shortcuts:
 
-esc to enable debug overlay
+- [0-9] - switch inventory slot
+- [q] - drop selected item
+- [wasd/arrowkeys] - movement
 
-when in debug overlay:
+Debug Shortcuts (enabled only in debug overlay):
 
-click and drag to move entitys
+- [esc] - open debug overlay
+- [o] - delete object
+- [i] - create object
+- [h] - decrease object width
+- [j] - increase object width
+- [v] - decrease object height
+- [b] - increase object height
