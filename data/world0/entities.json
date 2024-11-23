@@ -292,16 +292,6 @@
 	},
 	{
 		"zindex":0,
-		"handle":"intro-dialouge",
-		"type":"ActionEntity",
-		"pos":[15,8],
-		"size":[1,1],
-		"rgba":[1,0,0,1],
-		"actionTrigger": "collide",
-		"action": "IntroDialougeAction"
-	},
-	{
-		"zindex":0,
 		"handle":"fountain-dialouge",
 		"type":"ActionEntity",
 		"pos":[25,0.7],
