@@ -1,6 +1,6 @@
 class ControllerEntity extends Entity {
-  constructor(zindex, handle, pos, size, rgba, world) {
-    super(zindex, handle, pos, size, rgba, world);
+  constructor(zindex, handle, pos, size, rgba, world, image) {
+    super(zindex, handle, pos, size, rgba, world, image);
     this.pos = vec2(15,8)
 
     this.inventory = ["wood2", "wood3"];
@@ -21,6 +21,11 @@ class ControllerEntity extends Entity {
           drawTextScreen(this.world.items[itemHandle]["description"], vec2(200, (60*i)+120), 12, colour);
         }
       }
+    }
+
+    if ( this.image ) {
+      this.image.pos = this.pos;
+      this.image.render();
     }
   }
 

@@ -54,12 +54,13 @@ class World {
       const size = vec2(ent.size[0],ent.size[1]);
       const rgba = rgb(ent.rgba[0],ent.rgba[1],ent.rgba[2],ent.rgba[3]);
       const world = this;
+      const image = ent.image;
 
       if (handle) console.log("Building "+handle);
 
-      if ( type == "ControllerEntity" ) newEntities.push( new ControllerEntity( zindex, handle, pos, size, rgba, world ) );
-      else if ( type == "ObjectEntity" ) newEntities.push( new ObjectEntity( zindex, handle, pos, size, rgba, world ) );
-      else if ( type == "PhysicsObjectEntity" ) newEntities.push( new PhysicsObjectEntity( zindex, handle, pos, size, rgba, world ) );
+      if ( type == "ControllerEntity" ) newEntities.push( new ControllerEntity( zindex, handle, pos, size, rgba, world, image ) );
+      else if ( type == "ObjectEntity" ) newEntities.push( new ObjectEntity( zindex, handle, pos, size, rgba, world, image ) );
+      else if ( type == "PhysicsObjectEntity" ) newEntities.push( new PhysicsObjectEntity( zindex, handle, pos, size, rgba, world, image ) );
       else if ( type == "ActionEntity" ) {
         const actionTrigger = ent.actionTrigger;
         const action = actions[ent.action];
@@ -142,6 +143,7 @@ class World {
       const pos = [ent.originalPos.x,ent.originalPos.y];
       const size = [ent.size.x,ent.size.y];
       const rgba = [ent.rgba.r,ent.rgba.g,ent.rgba.b,ent.rgba.a];
+      const image = ent.image;
 
       if ( type == "ActionEntity" ) {
         const actionTrigger = this.entities[i].actionTrigger;
@@ -150,7 +152,7 @@ class World {
         entitiesList[i] = {"zindex": zindex, "handle": handle, "type": type, "pos": pos, "size": size, "rgba": rgba, "actionTrigger": actionTrigger, "action": action}
       }
       else {
-        entitiesList[i] = {"zindex": zindex, "handle": handle, "type": type, "pos": pos, "size": size, "rgba": rgba}
+        entitiesList[i] = {"zindex": zindex, "handle": handle, "type": type, "pos": pos, "size": size, "rgba": rgba, "image": [image.imageID, image.tileSize[0], image.tileSize[1], image.scale]}
       }
     }
 

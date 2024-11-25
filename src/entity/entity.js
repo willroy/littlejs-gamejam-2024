@@ -1,5 +1,5 @@
 class Entity extends EngineObject {
-  constructor(zindex, handle, pos, size, rgba, world) {
+  constructor(zindex, handle, pos, size, rgba, world, image) {
     super()
     this.zindex = zindex;
     this.handle = handle;
@@ -8,14 +8,21 @@ class Entity extends EngineObject {
     this.rgba = rgba;
     this.world = world;
     this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
-    // this.image = new SingleImage(this.pos)
+    this.image = image;
+    if ( this.image ) {
+      this.image = new SingleImage(vec2(this.image[1], this.image[2]), this.pos, this.image[3], this.image[0]);
+    }
   }
 
   render() {
     this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
-    // this.image.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
-    
+
     if (debug && debugOverlay) drawRect(this.pos, this.size, this.rgba, 0);
+
+    if ( this.image ) {
+      this.image.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
+      this.image.render();
+    }
   }
 
   update() {
