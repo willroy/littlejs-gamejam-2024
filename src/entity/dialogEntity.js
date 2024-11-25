@@ -9,6 +9,7 @@ class DialogEntity extends Entity {
     if ( this.triggerEntity.actionTrigger == "collide" ) this.eDown = true;
     this.fontSize = 0.5;
     this.selfDestruct = false;
+    this.finishAction = actions[dialogData.finishAction];
   }
 
   render() {
@@ -30,6 +31,8 @@ class DialogEntity extends Entity {
           this.world.entities = this.world.entities.filter((ent) => ent != this.triggerEntity);
           this.triggerEntity.destroy();
         }
+
+        if ( this.finishAction ) new this.finishAction(this.triggerEntity).trigger();
 
         return;
       }
