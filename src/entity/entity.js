@@ -8,10 +8,12 @@ class Entity extends EngineObject {
     this.rgba = rgba;
     this.world = world;
     this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
+    // this.image = new SingleImage(this.pos)
   }
 
   render() {
     this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
+    // this.image.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
     
     if (debug && debugOverlay) drawRect(this.pos, this.size, this.rgba, 0);
   }

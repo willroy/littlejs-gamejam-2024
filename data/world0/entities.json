@@ -294,8 +294,8 @@
 		"zindex":0,
 		"handle":"fountain-dialog",
 		"type":"ActionEntity",
-		"pos":[25,0.7],
-		"size":[0.7,0.7],
+		"pos":[26,0.7],
+		"size":[2,8],
 		"rgba":[1,0,0,1],
 		"actionTrigger": "interact",
 		"action": "FountainDialogAction"

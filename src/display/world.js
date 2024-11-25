@@ -4,7 +4,7 @@ class World {
     this.pos = vec2(0,0);
     this.frozen = false;
     this.entities = [];
-    this.background = new SingleImage(5477, 5359, 0, 0, 80, 1);
+    this.background = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, 1);
 
     this.player = "hedgehog";
 
@@ -16,10 +16,10 @@ class World {
   }
 
   reposition(xdiff, ydiff) {
-     if (this.frozen) return
+     if (this.frozen) return;
       
-     this.pos.x = this.pos.x + xdiff
-     this.pos.y = this.pos.y + ydiff
+     this.pos.x = this.pos.x + xdiff;
+     this.pos.y = this.pos.y + ydiff;
   }
 
   loadData() {
@@ -78,8 +78,7 @@ class World {
   }
 
   update() {
-    this.background.posX = this.pos.x;
-    this.background.posY = this.pos.y;
+    this.background.pos = this.pos;
 
     for ( entity in this.entites ) { entity.update(); }
 
