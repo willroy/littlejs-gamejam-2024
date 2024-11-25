@@ -8,6 +8,7 @@ class Display {
     cameraScale = this.scale;
 
     this.loaded = new World(0);
+    this.loadedUI = null;
   }
 
   render() {
@@ -16,6 +17,9 @@ class Display {
 
     // world
     this.loaded.render();
+
+    // loaded UI
+    if ( this.loadedUI ) this.loadedUI.render();
     
     // overlay
     drawRect(vec2(0, 32), vec2(100, 34), rgb(0.212, 0.325, 0.412));

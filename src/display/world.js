@@ -6,6 +6,8 @@ class World {
     this.entities = [];
     this.background = new SingleImage(5477, 5359, 0, 0, 80, 1);
 
+    this.player = "hedgehog";
+
     this.loadData();
 
     // debug stuff
@@ -13,7 +15,7 @@ class World {
     this.debug_placedEntity = false;
   }
 
-  reposition(xdiff, ydiff){
+  reposition(xdiff, ydiff) {
      if (this.frozen) return
       
      this.pos.x = this.pos.x + xdiff
@@ -113,7 +115,7 @@ class World {
       }
       if (keyIsDown("KeyI") && !this.debug_placedEntity) {
         this.debug_placedEntity = true;
-        this.entities.push(new ObjectEntity(vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0,1), this));
+        this.entities.push(new ObjectEntity(0, null, vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0,1), this));
       }
     }
   }

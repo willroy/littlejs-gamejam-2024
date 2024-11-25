@@ -6,7 +6,7 @@ class ItemPickupAction {
 	}
 
 	trigger() {
-		var player = this.world.getEntityByHandle("hedgehog");
+		var player = this.world.getEntityByHandle(this.world.player);
 		player.inventory.push(this.itemHandle);
 		this.triggerEntity.destroy();
 	}

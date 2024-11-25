@@ -319,5 +319,15 @@
 		"rgba":[1,1,0,1],
 		"actionTrigger": "interact",
 		"action": "ItemPickupAction"
+	},
+	{
+		"zindex":0,
+		"handle": "toolbox",
+		"type":"ActionEntity",
+		"pos":[30.6,-6.2],
+		"size":[0.3,0.3],
+		"rgba":[0,0,1,1],
+		"actionTrigger": "interact",
+		"action": "ToolboxAction"
 	}
 ]

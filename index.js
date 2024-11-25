@@ -4,7 +4,7 @@ setShowSplashScreen(true);
 
 var display
 
-var imageSources = ['assets/example.png', 'assets/area1.png']
+var imageSources = ['assets/example.png', 'assets/area1.png', 'assets/toolboxClosed.png']
 
 function gameInit()
 {
