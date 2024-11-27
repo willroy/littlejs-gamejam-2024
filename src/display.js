@@ -9,6 +9,7 @@ class Display {
 
     this.loaded = new World(0);
     this.loadedUI = null;
+
   }
 
   render() {
@@ -29,6 +30,7 @@ class Display {
   }
 
   update() {
+    if ( this.loadedUI ) this.loadedUI.update();
     this.loaded.update();
   }
 } 

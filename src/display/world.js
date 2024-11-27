@@ -7,6 +7,14 @@ class World {
     this.background = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, 1);
 
     this.player = "hedgehog";
+    this.actions = {
+      "DialogAction": DialogAction,
+      "ItemPickupAction": ItemPickupAction,
+      "IntroDialogAction": IntroDialogAction,
+      "FountainDialogAction": FountainDialogAction,
+      "BeaverDialogAction": BeaverDialogAction,
+      "ToolboxAction": ToolboxAction
+    }
 
     this.loadData();
 
@@ -63,7 +71,7 @@ class World {
       else if ( type == "PhysicsObjectEntity" ) newEntities.push( new PhysicsObjectEntity( zindex, handle, pos, size, rgba, world, image ) );
       else if ( type == "ActionEntity" ) {
         const actionTrigger = ent.actionTrigger;
-        const action = actions[ent.action];
+        const action = this.actions[ent.action];
 
         newEntities.push( new ActionEntity( zindex, handle, pos, size, rgba, world, actionTrigger, action ) );
       }
@@ -79,6 +87,7 @@ class World {
   }
 
   update() {
+    if (this.frozen) return;
     this.background.pos = this.pos;
 
     for ( entity in this.entites ) { entity.update(); }

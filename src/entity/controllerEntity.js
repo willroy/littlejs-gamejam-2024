@@ -34,10 +34,13 @@ class ControllerEntity extends Entity {
 
     if (this.world.frozen) return
 
-    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+0.07) ) { this.world.reposition(0, -0.07) }
-    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.world.reposition(0, 0.07) }
-    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.world.reposition(0.07, 0) }
-    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.world.reposition(-0.07, 0) }
+    // const diff = 0.07
+    const diff = 0.2
+
+    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+0.07) ) { this.world.reposition(0, 0 - diff) }
+    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.world.reposition(0, diff) }
+    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.world.reposition(diff, 0) }
+    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.world.reposition(0 - diff, 0) }
 
     for ( var i = 0; i < 9; i++ ) {
       if ( typeof this.inventory[i] !== 'undefined' && keyIsDown("Digit"+(i+1).toString()) ) {
@@ -52,7 +55,16 @@ class ControllerEntity extends Entity {
       this.droppedItem = true;
       var dropPos = this.pos.subtract(this.world.pos);
       // need to re sort entities list by z index after this
-      this.world.entities.push( new ActionEntity( 0, this.inventory[this.inventoryPos], dropPos, vec2(0.5,0.5), rgb(1,1,0,1), this.world, "interact", actions["ItemPickupAction"] ) );
+      this.world.entities.push( new ActionEntity(
+        0, 
+        this.inventory[this.inventoryPos], 
+        dropPos, 
+        vec2(0.5,0.5), 
+        rgb(1,1,0,1), 
+        this.world, 
+        "interact", 
+        this.world.actions["ItemPickupAction"]
+      ) );
       this.inventory.splice(this.inventoryPos, 1);
     }
 

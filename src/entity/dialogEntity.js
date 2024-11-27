@@ -9,7 +9,7 @@ class DialogEntity extends Entity {
     if ( this.triggerEntity.actionTrigger == "collide" ) this.eDown = true;
     this.fontSize = 0.5;
     this.selfDestruct = false;
-    this.finishAction = actions[dialogData.finishAction];
+    this.finishAction = world.actions[dialogData.finishAction];
   }
 
   render() {

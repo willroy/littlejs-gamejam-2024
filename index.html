@@ -6,7 +6,7 @@
 </head><body>
 <input type="file" id="uploadWorld" value="Import" hidden/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="lib/jquery.min.js?209"></script>
 
 <!-- LittleJS Engine -->
 <script src=lib/engineDebug.js?209></script>
@@ -44,53 +44,62 @@
 <script src=src/ui/toolboxUI.js?209></script>
 
 <!-- Action Classes -->
-<script>
-  var actionsGeneric = [
-    "DialogAction",
-    "ItemPickupAction",
-  ];
+<script src=src/actionsGeneric/dialogAction.js?209></script>
+<script src=src/actionsGeneric/itemPickupAction.js?209></script>
 
-  var actionsSpecific = [
-    "IntroDialogAction",
-    "FountainDialogAction",
-    "BeaverDialogAction",
-    "ToolboxAction"
-  ];
+<script src=src/actionsSpecific/beaverDialogAction.js?209></script>
+<script src=src/actionsSpecific/fountainDialogAction.js?209></script>
+<script src=src/actionsSpecific/introDialogAction.js?209></script>
+<script src=src/actionsSpecific/toolboxAction.js?209></script>
 
-  var actions = [];
-  var totalScripts = actionsGeneric.length + actionsSpecific.length;
-  var loadedScripts = 0;
-
-  $( document ).ready(function() {
-    for ( var i = 0; i < actionsGeneric.length; i++ ) {
-      var script = document.createElement('script');
-      var scriptName = actionsGeneric[i].charAt(0).toLowerCase() + actionsGeneric[i].slice(1);
-      script.onload = function () { loadedScripts++; createActionsList(); };
-      script.src = "src/actionsGeneric/"+scriptName+".js?209";
-      document.head.appendChild(script);
-    }
-    for ( var i = 0; i < actionsSpecific.length; i++ ) {
-      var script = document.createElement('script');
-      var scriptName = actionsSpecific[i].charAt(0).toLowerCase() + actionsSpecific[i].slice(1);
-      script.onload = function () { loadedScripts++; createActionsList(); };
-      script.src = "src/actionsSpecific/"+scriptName+".js?209";
-      document.head.appendChild(script);
-    }
-  });
-
-  function createActionsList() {
-    if ( totalScripts != loadedScripts ) return;
-
-    var actionsTmp = [];
-    actionsTmp.push.apply(actionsTmp, actionsGeneric);
-    actionsTmp.push.apply(actionsTmp, actionsSpecific);
-
-    for ( var i = 0; i < actionsTmp.length; i++ ) {
-      var actionString = actionsTmp[i];
-      actions[actionString] = eval(actionsTmp[i]);
-    }
-  }
-</script>
+<!-- <script> -->
+  <!-- var actionsGeneric = [ -->
+    <!-- "DialogAction", -->
+    <!-- "ItemPickupAction", -->
+  <!-- ]; -->
+<!--  -->
+  <!-- var actionsSpecific = [ -->
+    <!-- "IntroDialogAction", -->
+    <!-- "FountainDialogAction", -->
+    <!-- "BeaverDialogAction", -->
+    <!-- "ToolboxAction" -->
+  <!-- ]; -->
+<!--  -->
+  <!-- var actions = []; -->
+  <!-- var totalScripts = actionsGeneric.length + actionsSpecific.length; -->
+  <!-- var loadedScripts = 0; -->
+<!--  -->
+  <!-- $( document ).ready(function() { -->
+    <!-- for ( var i = 0; i < actionsGeneric.length; i++ ) { -->
+      <!-- var script = document.createElement('script'); -->
+      <!-- var scriptName = actionsGeneric[i].charAt(0).toLowerCase() + actionsGeneric[i].slice(1); -->
+      <!-- script.onload = function () { loadedScripts++; createActionsList(); }; -->
+      <!-- script.src = "src/actionsGeneric/"+scriptName+".js?209"; -->
+      <!-- document.head.appendChild(script); -->
+    <!-- } -->
+    <!-- for ( var i = 0; i < actionsSpecific.length; i++ ) { -->
+      <!-- var script = document.createElement('script'); -->
+      <!-- var scriptName = actionsSpecific[i].charAt(0).toLowerCase() + actionsSpecific[i].slice(1); -->
+      <!-- script.onload = function () { loadedScripts++; createActionsList(); }; -->
+      <!-- script.src = "src/actionsSpecific/"+scriptName+".js?209"; -->
+      <!-- document.head.appendChild(script); -->
+    <!-- } -->
+    <!-- createActionsList(); -->
+  <!-- }); -->
+<!--  -->
+  <!-- function createActionsList() { -->
+    <!-- if ( totalScripts != loadedScripts ) return; -->
+<!--  -->
+    <!-- var actionsTmp = []; -->
+    <!-- actionsTmp.push.apply(actionsTmp, actionsGeneric); -->
+    <!-- actionsTmp.push.apply(actionsTmp, actionsSpecific); -->
+<!--  -->
+    <!-- for ( var i = 0; i < actionsTmp.length; i++ ) { -->
+      <!-- var actionString = actionsTmp[i]; -->
+      <!-- actions[actionString] = eval(actionsTmp[i]); -->
+    <!-- } -->
+  <!-- } -->
+<!-- </script> -->
 
 <script>
 	$(document).keyup(function (e) {
