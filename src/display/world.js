@@ -5,6 +5,7 @@ class World {
     this.frozen = false;
     this.entities = [];
     this.background = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, 1);
+    this.backgroundOver = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, 3);
 
     this.player = "hedgehog";
     this.actions = {
@@ -80,15 +81,21 @@ class World {
     this.entities = newEntities;
   }
 
-  render() {  
+  render() { 
+
+    // for some reason player renders after backgroundOver render, need to investigate
+
     this.background.render();
 
     for ( entity in this.entites ) { entity.render(); }
+
+    this.backgroundOver.render();
   }
 
   update() {
     if (this.frozen) return;
     this.background.pos = this.pos;
+    this.backgroundOver.pos = this.pos;
 
     for ( entity in this.entites ) { entity.update(); }
 

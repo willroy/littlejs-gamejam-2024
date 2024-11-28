@@ -6,10 +6,18 @@ class ControllerEntity extends Entity {
     this.inventory = ["wood2", "wood3"];
     this.inventoryPos = 0;
     this.droppedItem = false;
+
+    // this.speed = 0.07;
+    this.speed = 0.2;
   }
 
   render() {
     drawRect(this.pos, this.size, this.rgba, 0);
+
+    if ( this.image ) {
+      this.image.pos = this.pos;
+      this.image.render();
+    }
 
     if ( this.inventory.length > 0 ) {
       for ( var i = 0; i < this.inventory.length; i++ ) {
@@ -22,11 +30,6 @@ class ControllerEntity extends Entity {
         }
       }
     }
-
-    if ( this.image ) {
-      this.image.pos = this.pos;
-      this.image.render();
-    }
   }
 
   update() {
@@ -34,13 +37,11 @@ class ControllerEntity extends Entity {
 
     if (this.world.frozen) return
 
-    // const diff = 0.07
-    const diff = 0.2
 
-    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+0.07) ) { this.world.reposition(0, 0 - diff) }
-    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-0.07) ) { this.world.reposition(0, diff) }
-    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-0.07, this.pos.y) ) { this.world.reposition(diff, 0) }
-    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+0.07, this.pos.y) ) { this.world.reposition(0 - diff, 0) }
+    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed) ) { this.world.reposition(0, 0 - this.speed) }
+    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed) ) { this.world.reposition(0, this.speed) }
+    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-this.speed, this.pos.y) ) { this.world.reposition(this.speed, 0) }
+    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+this.speed, this.pos.y) ) { this.world.reposition(0 - this.speed, 0) }
 
     for ( var i = 0; i < 9; i++ ) {
       if ( typeof this.inventory[i] !== 'undefined' && keyIsDown("Digit"+(i+1).toString()) ) {
