@@ -125,6 +125,11 @@ class World {
       else if (keyIsDown("KeyJ")) closestObject.size.x = closestObject.size.x + 0.1;
       else if (keyIsDown("KeyV")) closestObject.size.y = closestObject.size.y - 0.1;
       else if (keyIsDown("KeyB")) closestObject.size.y = closestObject.size.y + 0.1;
+      else if (keyIsDown("KeyF")) { 
+        var player = this.getEntityByHandle(this.player);
+        if ( player.speed == 0.2 ) player.speed = 0.08;
+        else player.speed = 0.2;
+      }
       else if (keyIsDown("KeyO")) {
         closestObject.destroy();
         this.entities.splice(closestObject.id, 1);

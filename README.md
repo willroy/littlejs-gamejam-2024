@@ -13,3 +13,4 @@ Debug Shortcuts (enabled only in debug overlay):
 - [j] - increase object width
 - [v] - decrease object height
 - [b] - increase object height
+- [f] - toggle super speed
