@@ -1,8 +1,9 @@
 class ItemPickupAction {
-	constructor(triggerEntity) {
+	constructor(triggerEntity, itemHandle) {
 		this.triggerEntity = triggerEntity;
 		this.world = this.triggerEntity.world;
-		this.itemHandle = this.triggerEntity.handle;
+		if ( itemHandle ) this.itemHandle = itemHandle
+		else this.itemHandle = this.triggerEntity.handle;
 	}
 
 	trigger() {
