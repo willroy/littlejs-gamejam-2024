@@ -10,7 +10,7 @@ class Entity extends EngineObject {
     this.pos = vec2(this.originalPos.x+this.world.pos.x, this.originalPos.y+this.world.pos.y);
     this.image = image;
     if ( this.image ) {
-      this.image = new SingleImage(vec2(this.image[1], this.image[2]), this.pos, this.image[3], this.image[0]);
+      this.image = new SingleImage(vec2(this.image[1], this.image[2]), this.pos, this.image[3], images[this.image[0]]);
     }
   }
 

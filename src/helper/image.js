@@ -12,6 +12,7 @@ class Image {
     if ( !this.visible ) return;
 
     drawTile(this.pos, vec2(this.scale, this.scale), this.image);
+    // mainContext.drawImage(this.image.getTextureInfo().image, this.pos, this.scale);
   }
 
   update() {

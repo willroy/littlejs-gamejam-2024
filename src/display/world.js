@@ -4,8 +4,8 @@ class World {
     this.pos = vec2(0,0);
     this.frozen = false;
     this.entities = [];
-    this.background = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, 1);
-    this.backgroundOver = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, 3);
+    this.background = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, images["area1"]);
+    this.backgroundOver = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, images["area1Over"]);
 
     this.player = "hedgehog";
     this.actions = {
@@ -14,7 +14,8 @@ class World {
       "IntroDialogAction": IntroDialogAction,
       "FountainDialogAction": FountainDialogAction,
       "BeaverDialogAction": BeaverDialogAction,
-      "ToolboxAction": ToolboxAction
+      "ToolboxAction": ToolboxAction,
+      "FountainLeverAction": FountainLeverAction
     }
 
     this.loadData();

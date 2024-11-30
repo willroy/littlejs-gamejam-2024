@@ -30,5 +30,23 @@
       "I can reach it now!"
     ],
     "colour": "165a91"
+  },
+  "fountainLever-broken": {
+    "dialog": [
+      "Hmm, looks like there is a missing piece."
+    ],
+    "colour": "165a91"
+  },
+  "fountainLever-brokenHaveItem": {
+    "dialog": [
+      "Hmmm, maybe I have an item for this?"
+    ],
+    "colour": "165a91"
+  },
+  "fountainLever-brokenHoldingItem": {
+    "dialog": [
+      "Let me try this..."
+    ],
+    "colour": "165a91"
   }
 }

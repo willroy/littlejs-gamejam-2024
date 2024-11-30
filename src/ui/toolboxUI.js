@@ -5,9 +5,9 @@ class ToolboxUI extends EngineObject {
     this.world = triggerEntity.world;
     this.player = this.world.getEntityByHandle(this.world.player);
 
-    this.toolboxClosed = new SingleImage(vec2(500,500), this.player.pos, 10, 2);
-    this.toolboxOpen = new SingleImage(vec2(500,500), this.player.pos, 10, 4);
-    this.toolboxOpenWTool = new SingleImage(vec2(500,500), this.player.pos, 10, 5);
+    this.toolboxClosed = new SingleImage(vec2(500,500), this.player.pos, 10, images["toolboxClosed"]);
+    this.toolboxOpen = new SingleImage(vec2(500,500), this.player.pos, 10, images["toolboxOpen"]);
+    this.toolboxOpenWTool = new SingleImage(vec2(500,500), this.player.pos, 10, images["toolboxOpenWTool"]);
 
     this.image = this.toolboxClosed;
 
@@ -62,7 +62,7 @@ class ToolboxUI extends EngineObject {
 
       if ( this.opened && !this.tooltaken ) {
         var withinX = ( mousePos.x > 18 && mousePos.x < 20 )
-        var withinY = ( mousePos.y > 6 && mousePos.y < 8 )
+        var withinY = ( mousePos.y > 6 && mousePos.y < 8 ) 
         if ( withinX && withinY ) {
           this.image = this.toolboxOpen;
           this.tooltaken = true;
