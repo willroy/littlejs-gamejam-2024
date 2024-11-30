@@ -4,6 +4,7 @@ class ActionEntity extends Entity {
     this.actionTrigger = actionTrigger;
     this.action = action;
     this.triggered = false;
+    this.unTriggerOnRelease = false;
   }
 
   render() {
@@ -20,6 +21,8 @@ class ActionEntity extends Entity {
     // if ( !this.triggered && this.actionTrigger == "proximity" && this.proximityTrigger() ) triggerAction = true;
 
     if ( triggerAction ) new this.action(this).trigger();
+
+    if ( this.unTriggerOnRelease && !keyIsDown("KeyE") ) this.triggered = false;
   }
 
   collideTrigger() {

@@ -3,7 +3,7 @@ class Image {
     this.tilePos = tilePos;
     this.tileSize = tileSize;
     this.pos = pos;
-    this.scale = scale;
+    this.worldSize = vec2((this.tileSize.x/this.tileSize.y), 1).multiply(vec2(scale,scale));
     this.imageID = imageID;
     this.visible = true;
   }
@@ -11,8 +11,7 @@ class Image {
   render() {
     if ( !this.visible ) return;
 
-    drawTile(this.pos, vec2(this.scale, this.scale), this.image);
-    // mainContext.drawImage(this.image.getTextureInfo().image, this.pos, this.scale);
+    drawTile(this.pos, this.worldSize, this.image);
   }
 
   update() {

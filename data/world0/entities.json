@@ -363,7 +363,7 @@
 		"zindex":0,
 		"handle": "fountainLever",
 		"type":"ObjectEntity",
-		"pos":[28,-5],
+		"pos":[28.35,-4.75],
 		"size":[0.1,0.1],
 		"rgba":[0,0,1,1]
 	}
