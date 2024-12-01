@@ -3,7 +3,7 @@ class ControllerEntity extends Entity {
     super(zindex, handle, pos, size, rgba, world, image);
     this.pos = vec2(15,8)
 
-    this.inventory = ["wood2", "wood3"];
+    this.inventory = [];
     this.inventoryPos = 0;
     this.droppedItem = false;
 

@@ -9,6 +9,7 @@ class DialogEntity extends Entity {
     if ( this.triggerEntity.actionTrigger == "collide" ) this.eDown = true;
     this.fontSize = 0.5;
     this.selfDestruct = false;
+    this.unTriggerOnFinish = false;
     this.finishAction = world.actions[dialogData.finishAction];
   }
 
@@ -33,6 +34,7 @@ class DialogEntity extends Entity {
         }
 
         if ( this.finishAction ) new this.finishAction(this.triggerEntity).trigger();
+        if ( this.unTriggerOnFinish && !keyIsDown("KeyE") ) this.triggerEntity.triggered = false;
 
         return;
       }

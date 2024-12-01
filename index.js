@@ -6,33 +6,36 @@ var display
 
 var imageSources = [
   'assets/area1.png', 'assets/area1Over.png',
-  'assets/toolboxOpen.png', 'assets/toolboxClosed.png', 'assets/toolboxOpenWTool.png',
+  'assets/toolboxClosed.png', 'assets/toolboxOpenWTool.png', 'assets/toolboxOpen.png',
   'assets/example.png', 'assets/beaver.png', 'assets/squirrel.png',
   'assets/fountainFull.png', 'assets/fountainFullNoWood.png', 'assets/fountainLeverUp.png', 'assets/fountainLeverDown.png',  
+  'assets/musicboxClosed.png', 'assets/musicboxOpenWKey.png', 'assets/musicboxOpen.png'
 ]
 
 var images = {
   "area1": 0,
   "area1Over": 1,
-  "toolboxOpen": 2,
-  "toolboxClosed": 3,
-  "toolboxOpenWTool": 4,
+  "toolboxClosed": 2,
+  "toolboxOpenWTool": 3,
+  "toolboxOpen": 4,
   "hedgehog": 5,
   "beaver": 6,
   "squirrel": 7,
   "fountainFull": 8,
   "fountainFullNoWood": 9,
   "fountainLeverUp": 10,
-  "fountainLeverDown": 11
+  "fountainLeverDown": 11,
+  "musicboxClosed": 12,
+  "musicboxOpenWKey": 13,
+  "musicboxOpen": 14
 }
 
-var gameVariables = {
-  "leverPiecePlaced": false
-}
+var gameVariables = {}
 
 function gameInit()
 {
   display = new Display(16, 8, 48)
+  debugKey = "Semicolon";
 }
 
 function gameUpdate()

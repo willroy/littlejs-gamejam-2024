@@ -2,11 +2,12 @@ Game Shortcuts:
 
 - [0-9] - switch inventory slot
 - [q] - drop selected item
+- [esc] - back / quit menu
 - [wasd/arrowkeys] - movement
 
 Debug Shortcuts (enabled only in debug overlay):
 
-- [esc] - open debug overlay
+- [;] - open debug overlay
 - [o] - delete object
 - [i] - create object
 - [h] - decrease object width

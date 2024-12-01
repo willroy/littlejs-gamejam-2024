@@ -7,28 +7,34 @@ class FountainLeverAction {
   trigger() {
     var dialogAction = new DialogAction(this.triggerEntity);
     var player = this.world.getEntityByHandle(this.world.player);
+
     this.triggerEntity.triggered = true;
-    this.triggerEntity.unTriggerOnRelease = true;
 
     if (gameVariables["leverPiecePlaced"]) {
       var leverEntity = this.world.getEntityByHandle("fountainLever");
-
       leverEntity.image = new SingleImage(vec2(84, 199), this.pos, 3, images["fountainLeverDown"]);
+
+      var fountainEntity = this.world.getEntityByHandle("fountain");
+      fountainEntity.image = new SingleImage(vec2(210, 538), this.pos, 8, images["fountainFull"]);
+
       this.world.entities = this.world.entities.filter((ent) => ent != this.triggerEntity);
       this.triggerEntity.destroy();
+      gameVariables["fountainFull"] = true;
     }
     else if ( player.inventory.includes("leverpiece") && player.inventory.indexOf("leverpiece") == player.inventoryPos ) {
-      dialogAction.dialogHandle = "fountainLever-brokenHoldingItem";
-      gameVariables["leverPiecePlaced"] = true;
       var leverEntity = this.world.getEntityByHandle("fountainLever");
       leverEntity.image = new SingleImage(vec2(84, 199), this.pos, 3, images["fountainLeverUp"]);
+      this.triggerEntity.unTriggerOnRelease = true;
+      gameVariables["leverPiecePlaced"] = true;
     } 
     else if ( player.inventory.includes("leverpiece") ) {
       dialogAction.dialogHandle = "fountainLever-brokenHaveItem";
+      dialogAction.unTriggerOnRelease = true;
       dialogAction.trigger();
     } 
     else {
       dialogAction.dialogHandle = "fountainLever-broken";
+      dialogAction.unTriggerOnRelease = true;
       dialogAction.trigger();
     }
   }
