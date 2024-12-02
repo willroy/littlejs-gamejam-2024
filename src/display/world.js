@@ -135,7 +135,10 @@ class World {
         closestObject.destroy();
         this.entities.splice(closestObject.id, 1);
       }
-      if (keyIsDown("KeyI") && !this.debug_placedEntity) {
+      else if (keyIsDown("KeyC")) {
+        console.log('{\n    "zindex":0,\n    "type":"ObjectEntity",\n    "pos":['+closestObject.originalPos.x+','+closestObject.originalPos.y+'],\n    "size":['+closestObject.size.x+','+closestObject.size.y+'],\n    "rgba":[0,0,0,1]\n}');
+      }
+      else if (keyIsDown("KeyI") && !this.debug_placedEntity) {
         this.debug_placedEntity = true;
         this.entities.push(new ObjectEntity(0, null, vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0,1), this));
       }
