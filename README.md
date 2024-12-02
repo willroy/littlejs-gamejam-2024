@@ -15,3 +15,4 @@ Debug Shortcuts (enabled only in debug overlay):
 - [v] - decrease object height
 - [b] - increase object height
 - [f] - toggle super speed
+- [c] - copy and console log objectentity json
