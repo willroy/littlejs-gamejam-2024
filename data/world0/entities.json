@@ -94,6 +94,16 @@
     },
     {
         "zindex":0,
+        "handle": "musicbox",
+        "type":"ActionEntity",
+        "pos":[30.6,-6.2],
+        "size":[1,1],
+        "rgba":[0,0,1,1],
+        "actionTrigger": "interact",
+        "action": "MusicBoxAction"
+    },
+    {
+        "zindex":0,
         "handle": "wood2",
         "type":"ActionEntity",
         "pos":[ 17.0, 3.0],
