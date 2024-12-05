@@ -12,7 +12,7 @@ class MusicBoxUI extends EngineObject {
 
     this.musicBoxClosed = new SingleImage(vec2(500,500), this.player.pos, 10, images["musicboxClosed"]);
     this.musicBoxOpen = new SingleImage(vec2(500,500), this.player.pos, 10, images["musicboxOpen"]);
-    this.musicBoxOpenWTool = new SingleImage(vec2(500,500), this.player.pos, 10, images["musicboxOpenWTool"]);
+    this.musicBoxOpenWTool = new SingleImage(vec2(500,500), this.player.pos, 10, images["musicboxOpenWKey"]);
 
     this.image = this.musicBoxClosed;
 
@@ -28,6 +28,7 @@ class MusicBoxUI extends EngineObject {
     ]
 
     this.sequence = [0,3,1,6]
+    this.entered = []
 
     this.startButton = this.player.pos.add(vec2(-0.05, 0.46)),
 
@@ -55,7 +56,6 @@ class MusicBoxUI extends EngineObject {
         this.playing = false
       }
     }
-    // drawRect(this.startButton, this.startButtonSize, purple, 0.8)
   }
 
   update() {
@@ -74,11 +74,41 @@ class MusicBoxUI extends EngineObject {
     if ( !this.opened && !this.playing) {
       if ( this.mousePress && mouseWasReleased(0) ) {
         if ( isMouseIn( this.startButton, this.startButtonSize ) ) {
-          console.log("Play Tunes...")
-          this.playing = true;
+          this.playTunes()
+        }
+        for (var i=0; i < this.keys.length; i++){
+          if (isMouseIn(this.keys[i], this.keySize)){
+            this.pressKey(i)
+          }
         }
         this.mousePress = false;
       }
     }
+  }
+
+  playTunes(){
+    console.log("Play Tunes...")
+    this.playing = true;
+  }
+
+  pressKey(key){
+    console.log("Key pressed: "+key)
+    if (key == this.sequence[this.entered.length]){
+      console.log("Well remembered!")
+      this.entered.push(key)
+    }
+    else {
+      console.log("Fail! Try again")
+      this.entered = []
+    }
+
+    console.log("Entered: "+this.entered)
+    if (this.sequence.length == this.entered.length){
+      console.log("Well Done!")
+      this.entered = []
+      this.opened = true
+      this.image = this.musicBoxOpenWTool
+    }
+
   }
 }
