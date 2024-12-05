@@ -74,7 +74,7 @@ class ToolboxUI extends EngineObject {
     if ( !this.opened ) {
       if ( this.mousePress && mouseWasReleased(0) ) {
         for ( var i = 0; i < this.combination.length; i++ ) {
-          if ( this.isMouseIn( this.combinationBoxes[i], this.buttonSize ) ) {
+          if ( isMouseIn( this.combinationBoxes[i], this.buttonSize ) ) {
             var currentColour = this.combination[i];
             this.combination[i] = (currentColour + 1) % this.colours.length;
           }
@@ -90,15 +90,6 @@ class ToolboxUI extends EngineObject {
 
   }
   
-  isMouseIn(boxOrigin, boxSize){
-    var minX = boxOrigin.x - boxSize.x / 2;
-    var maxX = boxOrigin.x + boxSize.x / 2;
-    var minY = boxOrigin.y - boxSize.y / 2;
-    var maxY = boxOrigin.y + boxSize.y / 2;
-    return mousePos.x > minX && mousePos.x < maxX &&  mousePos.y > minY && mousePos.y < maxY;
-  }
-
-
   isCombinationCorrect(){
     for (var i = 0; i < this.combination.length; i++) {
       if (this.combination[i] != this.targetCombination[i]) {
