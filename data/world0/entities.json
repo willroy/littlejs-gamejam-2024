@@ -114,8 +114,8 @@
         "zindex":0,
         "handle": "musicbox",
         "type":"ActionEntity",
-        "pos":[30.6,-6.2],
-        "size":[1,1],
+        "pos":[20.5,24.7],
+        "size":[1.5,1],
         "rgba":[0,0,1,1],
         "actionTrigger": "interact",
         "action": "MusicBoxAction"

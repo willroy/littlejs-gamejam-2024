@@ -17,6 +17,7 @@ class World {
       "FountainDialogAction": FountainDialogAction,
       "BeaverDialogAction": BeaverDialogAction,
       "ToolboxAction": ToolboxAction,
+      "MusicBoxAction": MusicBoxAction,
       "FountainLeverAction": FountainLeverAction
     }
 
