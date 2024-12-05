@@ -50,7 +50,7 @@ class ToolboxUI extends EngineObject {
 
   update() {
     if (keyWasReleased("Escape")) {
-      display.loadedUI = this.world;
+      display.loadedUI = null;
       this.triggerEntity.triggered = false;
       this.world.frozen = false;
       this.destroy();
