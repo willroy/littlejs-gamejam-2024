@@ -12,7 +12,7 @@ class ControllerEntity extends Entity {
   }
 
   render() {
-    drawRect(this.pos, this.size, this.rgba, 0);
+    if (debug && debugOverlay) drawRect(this.pos, this.size, this.rgba, 0);
 
     if ( this.image ) {
       this.image.pos = this.pos;

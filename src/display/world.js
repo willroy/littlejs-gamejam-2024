@@ -8,6 +8,8 @@ class World {
     this.backgroundOver = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, images["area1Over"]);
 
     this.player = "hedgehog";
+    this.world = "world";
+    this.worldOverlay = "worldOverlay";
     this.actions = {
       "DialogAction": DialogAction,
       "ItemPickupAction": ItemPickupAction,
@@ -68,7 +70,8 @@ class World {
 
       if (handle) console.log("Building "+handle);
 
-      if ( type == "ControllerEntity" ) newEntities.push( new ControllerEntity( zindex, handle, pos, size, rgba, world, image ) );
+      if ( type == "Entity" ) newEntities.push( new Entity( zindex, handle, pos, size, rgba, world, image ) );
+      else if ( type == "ControllerEntity" ) newEntities.push( new ControllerEntity( zindex, handle, pos, size, rgba, world, image ) );
       else if ( type == "ObjectEntity" ) newEntities.push( new ObjectEntity( zindex, handle, pos, size, rgba, world, image ) );
       else if ( type == "PhysicsObjectEntity" ) newEntities.push( new PhysicsObjectEntity( zindex, handle, pos, size, rgba, world, image ) );
       else if ( type == "ActionEntity" ) {
@@ -83,22 +86,24 @@ class World {
   }
 
   render() { 
+    var worldEntity = this.getEntityByHandle(this.world);
+    var worldOverlayEntity = this.getEntityByHandle(this.worldOverlay);
 
-    // for some reason player renders after backgroundOver render, need to investigate
-
-    this.background.render();
+    if ( worldEntity != null ) { worldEntity.render(); }
 
     for ( entity in this.entites ) { entity.render(); }
 
-    this.backgroundOver.render();
+    if ( worldOverlayEntity != null ) { worldOverlayEntity.render(); }
   }
 
   update() {
     if (this.frozen) return;
-    this.background.pos = this.pos;
-    this.backgroundOver.pos = this.pos;
 
-    for ( entity in this.entites ) { entity.update(); }
+    var worldEntity = this.getEntityByHandle(this.world);
+    var worldOverlayEntity = this.getEntityByHandle(this.worldOverlay);
+
+    if ( worldEntity != null ) { worldEntity.pos = this.pos; }
+    if ( worldOverlayEntity != null ) { worldOverlayEntity.pos = this.pos; }
 
     // debug stuff
 
@@ -196,5 +201,6 @@ class World {
         return this.entities[i];
       }
     }
+    return null;
   }
 }
