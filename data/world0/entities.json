@@ -1,23 +1,5 @@
 [
     {
-        "zindex":-9999,
-        "handle":"world",
-        "type":"Entity",
-        "pos":[0,0],
-        "size":[1,1],
-        "rgba":[0.1,0.1,0.1,1],
-        "image":["area1",5477,5359,80]
-    },
-    {
-        "zindex":9999,
-        "handle":"worldOverlay",
-        "type":"Entity",
-        "pos":[0,0],
-        "size":[1,1],
-        "rgba":[0.1,0.1,0.1,1],
-        "image":["area1Over",5477,5359,80]
-    },
-    {
         "zindex":100,
         "handle":"hedgehog",
         "type":"ControllerEntity",

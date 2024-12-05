@@ -8,8 +8,6 @@ class World {
     this.backgroundOver = new SingleImage(vec2(5477,5359), vec2(0, 0), 80, images["area1Over"]);
 
     this.player = "hedgehog";
-    this.world = "world";
-    this.worldOverlay = "worldOverlay";
     this.actions = {
       "DialogAction": DialogAction,
       "ItemPickupAction": ItemPickupAction,
@@ -87,24 +85,20 @@ class World {
   }
 
   render() { 
-    var worldEntity = this.getEntityByHandle(this.world);
-    var worldOverlayEntity = this.getEntityByHandle(this.worldOverlay);
-
-    if ( worldEntity != null ) { worldEntity.render(); }
+    this.background.render();
 
     for ( entity in this.entites ) { entity.render(); }
+  }
 
-    if ( worldOverlayEntity != null ) { worldOverlayEntity.render(); }
+  renderPost() {
+    this.backgroundOver.render();
   }
 
   update() {
     if (this.frozen) return;
 
-    var worldEntity = this.getEntityByHandle(this.world);
-    var worldOverlayEntity = this.getEntityByHandle(this.worldOverlay);
-
-    if ( worldEntity != null ) { worldEntity.pos = this.pos; }
-    if ( worldOverlayEntity != null ) { worldOverlayEntity.pos = this.pos; }
+    this.background.pos = this.pos;
+    this.backgroundOver.pos = this.pos;
 
     // debug stuff
 

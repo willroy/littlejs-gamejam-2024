@@ -54,6 +54,7 @@ function gameRender()
 
 function gameRenderPost()
 {
+  display.renderPost()
 }
 
 // start engine
