@@ -36,6 +36,7 @@ class MusicBoxUI extends EngineObject {
     this.keySize = vec2(0.6,1.8);
     this.counter = 0
     this.key = 0
+    this.keyPressed = -1
   }
 
   render() {
@@ -54,6 +55,14 @@ class MusicBoxUI extends EngineObject {
         this.key = 0
         console.log("Stopping tune")
         this.playing = false
+      }
+    }
+    else if(this.keyPressed >= 0){
+      drawRect(this.keys[this.keyPressed], this.keySize, purple);
+      this.counter++
+      if (this.counter >= 10){
+        this.counter = 0
+        this.keyPressed = -1
       }
     }
   }
@@ -92,6 +101,8 @@ class MusicBoxUI extends EngineObject {
   }
 
   pressKey(key){
+    this.keyPressed = key;
+    // TODO: the sequence should get longer by 1 each time and succeed once the end has been reached
     console.log("Key pressed: "+key)
     if (key == this.sequence[this.entered.length]){
       console.log("Well remembered!")
@@ -109,6 +120,5 @@ class MusicBoxUI extends EngineObject {
       this.opened = true
       this.image = this.musicBoxOpenWTool
     }
-
   }
 }
