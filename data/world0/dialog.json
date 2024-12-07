@@ -48,5 +48,17 @@
       "Let me try this..."
     ],
     "colour": "165a91"
+  },
+  "gate-locked": {
+    "dialog": [
+      "Hmm seems to be locked..."
+    ],
+    "colour": "165a91"
+  },
+  "gate-locked-haveKey": {
+    "dialog": [
+      "Now I can unlock it!"
+    ],
+    "colour": "165a91"
   }
 }

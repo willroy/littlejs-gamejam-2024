@@ -26,5 +26,9 @@
 	"wood5": {
 		"name": "Piece of wood",
 		"description": "Missing piece of wood for the bridge."
+	},
+	"gateKey": {
+		"name": "Gate Key",
+		"description": "This must be the key for the park exit!"
 	}
 }

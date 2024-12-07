@@ -16,7 +16,8 @@ class World {
       "BeaverDialogAction": BeaverDialogAction,
       "ToolboxAction": ToolboxAction,
       "MusicBoxAction": MusicBoxAction,
-      "FountainLeverAction": FountainLeverAction
+      "FountainLeverAction": FountainLeverAction,
+      "GateAction": GateAction
     }
 
     this.loadData();
@@ -77,7 +78,7 @@ class World {
         const actionTrigger = ent.actionTrigger;
         const action = this.actions[ent.action];
 
-        newEntities.push( new ActionEntity( zindex, handle, pos, size, rgba, world, actionTrigger, action ) );
+        newEntities.push( new ActionEntity( zindex, handle, pos, size, rgba, world, image, actionTrigger, action ) );
       }
     }
 

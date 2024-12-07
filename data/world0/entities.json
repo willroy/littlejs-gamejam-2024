@@ -15,7 +15,7 @@
         "pos":[17.0,-22.0],
         "size":[2.0,2.0],
         "rgba":[1,0,0,1],
-        "image":["beaver",201,206,3]
+        "image":["beaver",201,206,2]
     },
     {
         "zindex":0,
@@ -34,7 +34,7 @@
         "pos":[17.5,24.0],
         "size":[2.0,2.0],
         "rgba":[1,0,0,1],
-        "image":["squirrel",189,191,3]
+        "image":["squirrel",189,191,2]
     },
     {
         "zindex":0,
@@ -104,13 +104,40 @@
     },
     {
         "zindex":0,
-        "handle": "wood2",
+        "handle": "gateKey",
         "type":"ActionEntity",
-        "pos":[ 17.0, 3.0],
-        "size":[0.5,0.5],
+        "pos":[-2.5,29],
+        "size":[1,1],
+        "rgba":[1,1,0,1],
+        "actionTrigger": "collide",
+        "action": "ItemPickupAction",
+        "image":["gateKey",75,72,1.5]
+    },
+    {
+        "zindex":0,
+        "handle": "gate",
+        "type":"ActionEntity",
+        "pos":[-10.056249999999949,31.70208333333329],
+        "size":[3.0000000000000018,1.4000000000000004],
         "rgba":[1,1,0,1],
         "actionTrigger": "interact",
-        "action": "ItemPickupAction"
+        "action": "GateAction"
+    },
+    {
+        "zindex":0,
+        "handle": "gateOpen",
+        "type":"Entity",
+        "pos":[-10,34],
+        "size":[1,1],
+        "rgba":[1,1,0,1]
+    },
+    {
+        "zindex":0,
+        "handle": "gateBlocker",
+        "type":"ObjectEntity",
+        "pos":[-9.931249999999942,33.231249999999946],
+        "size":[2.200000000000002,1.2000000000000002],
+        "rgba":[0,0,0,1]
     },
     {
         "zindex":0,

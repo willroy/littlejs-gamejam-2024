@@ -1,6 +1,6 @@
 class ActionEntity extends Entity {
-  constructor(zindex, handle, pos, size, rgba, world, actionTrigger, action) {
-    super(zindex, handle, pos, size, rgba, world);
+  constructor(zindex, handle, pos, size, rgba, world, image, actionTrigger, action) {
+    super(zindex, handle, pos, size, rgba, world, image);
     this.actionTrigger = actionTrigger;
     this.action = action;
     this.triggered = false;
