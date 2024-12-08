@@ -1,7 +1,7 @@
 class GateAction {
     constructor(triggerEntity) {
       this.triggerEntity = triggerEntity;
-        this.world = triggerEntity.world;
+      this.world = triggerEntity.world;
     }
 
     trigger() {

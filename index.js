@@ -10,7 +10,9 @@ var imageSources = [
   'assets/example.png', 'assets/beaver.png', 'assets/squirrel.png',
   'assets/fountainFull.png', 'assets/fountainFullNoWood.png', 'assets/fountainLeverUp.png', 'assets/fountainLeverDown.png',  
   'assets/musicboxClosed.png', 'assets/musicboxOpenWKey.png', 'assets/musicboxOpen.png',
-  'assets/gateKey.png', 'assets/gateOpen.png'
+  'assets/gateKey.png', 'assets/gateOpen.png',
+  'assets/bridgeDone.png',
+  'assets/endscreen.png'
 ]
 
 var images = {
@@ -30,7 +32,9 @@ var images = {
   "musicboxOpenWKey": 13,
   "musicboxOpen": 14,
   "gateKey": 15,
-  "gateOpen": 16
+  "gateOpen": 16,
+  "bridgeDone": 17,
+  "endScreen": 18
 }
 
 var gameVariables = {}
