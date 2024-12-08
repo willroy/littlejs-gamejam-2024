@@ -5,6 +5,9 @@ class Endscreen {
   render() {
   }
 
+  renderPost() {
+  }
+
   update() {
   }
 }

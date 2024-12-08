@@ -35,8 +35,7 @@ class ControllerEntity extends Entity {
   update() {
     super.update();
 
-    if (this.world.frozen) return
-
+    if (this.world.frozen) return;
 
     if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed) ) { this.world.reposition(0, 0 - this.speed) }
     if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed) ) { this.world.reposition(0, this.speed) }

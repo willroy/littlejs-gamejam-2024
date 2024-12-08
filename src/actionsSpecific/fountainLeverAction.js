@@ -26,6 +26,7 @@ class FountainLeverAction {
       leverEntity.image = new SingleImage(vec2(84, 199), this.pos, 3, images["fountainLeverUp"]);
       this.triggerEntity.unTriggerOnRelease = true;
       gameVariables["leverPiecePlaced"] = true;
+      player.inventory.splice(player.inventory.indexOf("leverpiece"), 1);
     } 
     else if ( player.inventory.includes("leverpiece") ) {
       dialogAction.dialogHandle = "fountainLever-brokenHaveItem";

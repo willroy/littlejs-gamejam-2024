@@ -133,6 +133,16 @@
     },
     {
         "zindex":0,
+        "handle": "endScreen",
+        "type":"ActionEntity",
+        "pos":[-10,34],
+        "size":[1,1],
+        "rgba":[1,1,0,1],
+        "actionTrigger": "collide",
+        "action": "EndScreenAction"
+    },
+    {
+        "zindex":0,
         "handle": "bridgeDone",
         "type":"Entity",
         "pos":[-0.85,-25.21],

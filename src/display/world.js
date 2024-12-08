@@ -17,7 +17,8 @@ class World {
       "ToolboxAction": ToolboxAction,
       "MusicBoxAction": MusicBoxAction,
       "FountainLeverAction": FountainLeverAction,
-      "GateAction": GateAction
+      "GateAction": GateAction,
+      "EndScreenAction": EndScreenAction
     }
 
     this.loadData();
@@ -144,6 +145,12 @@ class World {
         this.entities.push(new ObjectEntity(0, null, vec2(mousePos.x-this.pos.x, mousePos.y-this.pos.y), vec2(1,1), rgb(0,0,0,1), this));
       }
     }
+  }
+
+  destroyByHandle(handle) {
+    var entity = this.getEntityByHandle(handle);
+    this.entities.splice(this.entities.indexOf(entity), 1);
+    entity.destroy();
   }
 
   uploadJSON(jsonString) {

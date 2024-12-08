@@ -12,7 +12,7 @@ class GateAction {
           var gateEntity = this.world.getEntityByHandle("gateOpen");
           gateEntity.image = new SingleImage(vec2(119, 287), this.pos, 4.3, images["gateOpen"]);
           this.triggerEntity.destroy();
-          this.world.getEntityByHandle("gateBlocker").destroy()
+          this.world.destroyByHandle("gateBlocker")
           return
         } 
         else if ( player.inventory.includes("gateKey") ) {

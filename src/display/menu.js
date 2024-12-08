@@ -5,6 +5,9 @@ class Menu {
   render() {
   }
 
+  renderPost() {
+  }
+
   update() {
   }
 }
