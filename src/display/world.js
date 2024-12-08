@@ -18,6 +18,7 @@ class World {
       "MusicBoxAction": MusicBoxAction,
       "FountainLeverAction": FountainLeverAction,
       "GateAction": GateAction,
+      "ShedKeyAction": ShedKeyAction,
       "EndScreenAction": EndScreenAction
     }
 

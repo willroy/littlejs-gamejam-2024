@@ -133,6 +133,16 @@
     },
     {
         "zindex":0,
+        "handle": "shed-door",
+        "type":"ActionEntity",
+        "pos":[7.5,30.6],
+        "size":[2.0,4.0],
+        "rgba":[1,0,0,1],
+        "actionTrigger": "interact",
+        "action": "ShedKeyAction"
+    },
+    {
+        "zindex":0,
         "handle": "endScreen",
         "type":"ActionEntity",
         "pos":[-10,34],

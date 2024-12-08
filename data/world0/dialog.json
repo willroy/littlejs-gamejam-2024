@@ -60,5 +60,23 @@
       "Now I can unlock it!"
     ],
     "colour": "165a91"
+  },
+  "shed-locked": {
+    "dialog": [
+      "Hmm seems to be locked..."
+    ],
+    "colour": "165a91"
+  },
+  "shed-empty": {
+    "dialog": [
+      "The shed is empty. You have already robbed it of anything useful..."
+    ],
+    "colour": "165a91"
+  },
+  "shed-locked-haveKey": {
+    "dialog": [
+      "Now I can unlock it!"
+    ],
+    "colour": "165a91"
   }
 }
