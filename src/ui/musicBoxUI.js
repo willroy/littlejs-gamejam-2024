@@ -31,12 +31,15 @@ class MusicBoxUI extends EngineObject {
     this.entered = []
 
     this.startButton = this.player.pos.add(vec2(-0.05, 0.46)),
+    this.shedkey = vec2( 18, 6)
+    this.shedkeySize = vec2( 2, 2)
 
     this.startButtonSize = vec2(0.6,0.6);
     this.keySize = vec2(0.6,1.8);
     this.counter = 0
     this.key = 0
     this.keyPressed = -1
+    this.keytaken = false;
   }
 
   render() {
@@ -60,10 +63,14 @@ class MusicBoxUI extends EngineObject {
     else if(this.keyPressed >= 0){
       drawRect(this.keys[this.keyPressed], this.keySize, purple);
       this.counter++
-      if (this.counter >= 10){
+      if (this.counter >= 20){
         this.counter = 0
         this.keyPressed = -1
       }
+    }
+
+    if (this.opened){
+      drawRect(this.shedkey, this.shedkeySize, purple)
     }
   }
 
@@ -78,6 +85,14 @@ class MusicBoxUI extends EngineObject {
 
     if (mouseWasPressed(0)) {
       this.mousePress = true;
+
+      if ( this.opened && !this.keytaken ) {
+        if ( isMouseIn(this.shedkey, this.shedkeySize) ) {
+          this.image = this.musicBoxOpen;
+          this.keytaken = true;
+          new ItemPickupAction(this.triggerEntity, "shedkey").trigger();
+        }
+      }
     }
 
     if ( !this.opened && !this.playing) {
