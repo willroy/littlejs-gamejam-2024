@@ -12,7 +12,8 @@ var imageSources = [
   'assets/musicboxClosed.png', 'assets/musicboxOpenWKey.png', 'assets/musicboxOpen.png',
   'assets/gateKey.png', 'assets/gateOpen.png',
   'assets/bridgeDone.png',
-  'assets/endscreen.png'
+  'assets/endscreen.png',
+  'assets/wood.png'
 ]
 
 var images = {
@@ -34,7 +35,8 @@ var images = {
   "gateKey": 15,
   "gateOpen": 16,
   "bridgeDone": 17,
-  "endScreen": 18
+  "endScreen": 18,
+  "wood": 19
 }
 
 var gameVariables = {}

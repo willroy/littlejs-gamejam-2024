@@ -141,6 +141,28 @@
     },
     {
         "zindex":0,
+        "handle": "wood4",
+        "type":"ActionEntity",
+        "pos":[29.670833333333324,27.131249999999962],
+        "size":[1,1],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "collide",
+        "action": "ItemPickupAction",
+        "image":["wood",709,367,1]
+    },
+    {
+        "zindex":0,
+        "handle": "wood5",
+        "type":"ActionEntity",
+        "pos":[32.10416666666666,-28.347916666666638],
+        "size":[1,1],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "collide",
+        "action": "ItemPickupAction",
+        "image":["wood",709,367,1]
+    },
+    {
+        "zindex":0,
         "handle": "bridgeBlocker",
         "type":"ObjectEntity",
         "pos":[5.76250000000001,-24.460416666666585],
