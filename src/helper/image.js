@@ -38,6 +38,11 @@ class SpriteSheetImage extends Image {
     this.image = new TileInfo(this.tilePos, this.tileSize, this.imageID);
   }
 
+  render() {
+    console.log(this.image)
+    super.render();
+  }
+
   update() {
     super.update();
   }
