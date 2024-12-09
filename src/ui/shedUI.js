@@ -29,12 +29,13 @@ class ShedUI extends EngineObject {
     if (mouseWasPressed(0)) {
       this.mousePress = true;
 
-      if ( !this.woodTaken ) {
+      if ( !gameVariables["shedEmpty"] || gameVariables["shedEmpty"] == null ) {
         if ( isMouseIn(this.wood, this.woodSize) ) {
           this.image = this.shelfEmpty;
           gameVariables["shedEmpty"] = true;
 
           new ItemPickupAction(this.triggerEntity, "wood2").trigger();
+          new ItemPickupAction(this.triggerEntity, "wood3").trigger();
         }
       }
     }
