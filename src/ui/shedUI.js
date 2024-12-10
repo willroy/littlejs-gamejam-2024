@@ -9,8 +9,7 @@ class ShedUI extends EngineObject {
     this.shelfEmpty = new SingleImage(vec2(2500,2000), this.player.pos, 18, images["shelfEmpty"]);
     
     this.wood = vec2(14,3)
-    this.woodSize = vec2(5,1)
-      
+    this.woodSize = vec2(10,2)
   }
 
   render() {
