@@ -12,6 +12,11 @@ class Display {
 
   }
 
+  quitUI() {
+    this.loadedUI = null;
+    this.loaded.frozen = false;
+  }
+
   render() {
     // world
     this.loaded.render();

@@ -7,8 +7,7 @@ class ControllerEntity extends Entity {
     this.inventoryPos = 0;
     this.droppedItem = false;
 
-    this.speed = 0.2;
-    // this.speed = 0.08;
+    this.speed = 0.15;
 
     this.animationSteps = {
       "up": [

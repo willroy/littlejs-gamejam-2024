@@ -21,13 +21,12 @@ class ShedUI extends EngineObject {
 
   update() {
     if (keyWasReleased("Escape")) {
-      console.log("Resetting trigger")
-      display.loadedUI = null;
+      display.quitUI();
       this.triggerEntity.triggered = false;
-      this.world.frozen = false;
       this.destroy();
       return;
     }
+
     if (mouseWasPressed(0)) {
       this.mousePress = true;
 

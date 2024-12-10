@@ -8,16 +8,17 @@
   },
   "beaver-dialog-afterwood": {
     "dialog": [
-      "Hello Dude",
       "Woah! I can fix the bridge now, thanks!"
     ],
-    "colour": "165a91"
+    "colour": "165a91",
+    "finishAction": "BuildBridgeAction"
   },
   "intro-dialog": {
     "dialog": [
       "Where are my friends?"
     ],
-    "colour": "165a91"
+    "colour": "165a91",
+    "finishAction": "ControlsAction"
   },
   "fountain-dialog-empty": {
     "dialog": [

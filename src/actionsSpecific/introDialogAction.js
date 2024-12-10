@@ -5,7 +5,7 @@ class IntroDialogAction {
 
     trigger() {
         var dialogAction = new DialogAction(this.triggerEntity);
-        dialogAction.triggerEntitySelfDestruct = true;
+        this.triggerEntity.destroy();
         dialogAction.trigger();
     }
 }
