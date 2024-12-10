@@ -1,7 +1,7 @@
 class ControllerEntity extends Entity {
   constructor(zindex, handle, pos, size, rgba, world, image) {
     super(zindex, handle, pos, size, rgba, world, image);
-    this.pos = vec2(15,8)
+    this.pos = vec2(16,8)
 
     this.inventory = [];
     this.inventoryPos = 0;
