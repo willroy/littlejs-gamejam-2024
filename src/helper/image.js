@@ -39,7 +39,6 @@ class SpriteSheetImage extends Image {
   }
 
   render() {
-    console.log(this.image)
     super.render();
   }
 

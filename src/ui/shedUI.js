@@ -20,6 +20,7 @@ class ShedUI extends EngineObject {
 
   update() {
     if (keyWasReleased("Escape")) {
+      console.log("Resetting trigger")
       display.loadedUI = null;
       this.triggerEntity.triggered = false;
       this.world.frozen = false;
@@ -31,7 +32,6 @@ class ShedUI extends EngineObject {
 
       if ( !gameVariables["shedEmpty"] || gameVariables["shedEmpty"] == null ) {
         if ( isMouseIn(this.wood, this.woodSize) ) {
-          this.image = this.shelfEmpty;
           gameVariables["shedEmpty"] = true;
 
           new ItemPickupAction(this.triggerEntity, "wood2").trigger();

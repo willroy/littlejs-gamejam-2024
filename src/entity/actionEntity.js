@@ -19,7 +19,10 @@ class ActionEntity extends Entity {
     if ( this.unTriggerOnRelease && !keyIsDown("KeyE") ) this.triggered = false;
 
     if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) triggerAction = true;
-    if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) triggerAction = true;
+    if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) {
+      console.log("Interacting with " + this.action.name)
+      triggerAction = true;
+    }
     // if ( !this.triggered && this.actionTrigger == "proximity" && this.proximityTrigger() ) triggerAction = true;
 
     if ( triggerAction ) new this.action(this).trigger();
