@@ -15,7 +15,7 @@
         "pos":[17.0,-22.0],
         "size":[2.0,2.0],
         "rgba":[1,0,0,1],
-        "image":["beaver",201,206,2]
+        "image":["beaver",201,206,3]
     },
     {
         "zindex":0,
@@ -34,7 +34,7 @@
         "pos":[17.5,24.0],
         "size":[2.0,2.0],
         "rgba":[1,0,0,1],
-        "image":["squirrel",189,191,2]
+        "image":["squirrel",189,191,3]
     },
     {
         "zindex":0,
@@ -66,8 +66,8 @@
         "zindex":0,
         "handle": "fountainLever-dialog",
         "type":"ActionEntity",
-        "pos":[28,-5],
-        "size":[1,1],
+        "pos":[28.556249999999988,-4.9645833333333105],
+        "size":[2.6000000000000014,1],
         "rgba":[0,0,1,1],
         "actionTrigger": "interact",
         "action": "FountainLeverAction"
@@ -86,8 +86,8 @@
         "zindex":0,
         "handle": "toolbox",
         "type":"ActionEntity",
-        "pos":[30.6,-6.2],
-        "size":[1,1],
+        "pos":[31.472916666666652,-6.197916666666645],
+        "size":[2.100000000000001,1],
         "rgba":[0,0,1,1],
         "actionTrigger": "interact",
         "action": "ToolboxAction"

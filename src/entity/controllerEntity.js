@@ -42,6 +42,7 @@ class ControllerEntity extends Entity {
     this.animationCount = 0;
     this.animationStep = 0;
     this.animationSpeed = 20;
+    this.animationIdle = false
   }
 
   render() {
@@ -70,22 +71,11 @@ class ControllerEntity extends Entity {
 
     if (this.world.frozen) return;
 
-    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed) ) {
-      this.world.reposition(0, 0 - this.speed)
-      this.dir = "up"
-    }
-    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed) ) {
-      this.world.reposition(0, this.speed)
-      this.dir = "down"
-    }
-    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-this.speed, this.pos.y) ) {
-      this.world.reposition(this.speed, 0)
-      this.dir = "left"
-    }
-    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+this.speed, this.pos.y) ) {
-      this.world.reposition(0 - this.speed, 0)
-      this.dir = "right"
-    }
+    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-this.speed, this.pos.y) ) this.move(this.speed, 0, "left")
+    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+this.speed, this.pos.y) ) this.move(0 - this.speed, 0, "right")
+    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed) ) this.move(0, 0 - this.speed, "up")
+    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed) ) this.move(0, this.speed, "down")
+    if ( !keyIsDown("ArrowLeft") && !keyIsDown("ArrowRight") && !keyIsDown("ArrowUp") && !keyIsDown("ArrowDown") ) this.animationIdle = true;
 
     for ( var i = 0; i < 9; i++ ) {
       if ( typeof this.inventory[i] !== 'undefined' && keyIsDown("Digit"+(i+1).toString()) ) {
@@ -96,27 +86,27 @@ class ControllerEntity extends Entity {
 
     if ( !keyIsDown("KeyQ") ) this.droppedItem = false;
     
-    if ( !this.droppedItem && keyIsDown("KeyQ") ) {
-      this.droppedItem = true;
-      var dropPos = this.pos.subtract(this.world.pos);
-      // need to re sort entities list by z index after this
-      this.world.entities.push( new ActionEntity(
-        0, 
-        this.inventory[this.inventoryPos], 
-        dropPos, 
-        vec2(0.5,0.5), 
-        rgb(1,1,0,1), 
-        this.world, 
-        "interact", 
-        this.world.actions["ItemPickupAction"]
-      ) );
-      this.inventory.splice(this.inventoryPos, 1);
-    }
+    // going to comment out for now because don't have world item images for every holdable item to place on ground
+    // if ( !this.droppedItem && keyIsDown("KeyQ") ) this.dropItem()
 
     this.animationCount = this.animationCount + 1;
-    if ( this.animationCount == this.animationSpeed ) {
+    if ( this.animationCount >= this.animationSpeed && !this.animationIdle ) {
       this.animationCount = 0;
       if ( this.animationStep >= this.animationSteps[this.dir].length ) { this.animationStep = 0 }
+
+      var animationStepXY = vec2(this.animationSteps[this.dir][this.animationStep][0], this.animationSteps[this.dir][this.animationStep][1]);
+      this.image = new SpriteSheetImage(animationStepXY, vec2(this.imageinfo[1], this.imageinfo[2]), this.pos, this.imageinfo[3], images[this.imageinfo[0]]);
+      this.animationStep = this.animationStep + 1;
+    }
+  }
+
+  move(xdiff, ydiff, dir) {
+    this.world.reposition(xdiff, ydiff);
+    this.animationIdle = false;
+    if ( this.dir != dir ) {
+      this.dir = dir;
+      this.animationCount = 0;
+      this.animationStep = 0;
       var animationStepXY = vec2(this.animationSteps[this.dir][this.animationStep][0], this.animationSteps[this.dir][this.animationStep][1])
       this.image = new SpriteSheetImage(animationStepXY, vec2(this.imageinfo[1], this.imageinfo[2]), this.pos, this.imageinfo[3], images[this.imageinfo[0]]);
       this.animationStep = this.animationStep + 1;
@@ -124,7 +114,7 @@ class ControllerEntity extends Entity {
   }
 
   collisonCheck(newX, newY) {
-    const collisionTypes = ["ObjectEntity"]
+    const collisionTypes = ["ObjectEntity"];
     for (var i=0; i<this.world.entities.length;i++) {
       var entityType = this.world.entities[i].constructor.name;
       if (this.world.entities[i] !== this && collisionTypes.includes(entityType) && isOverlapping(vec2(newX, newY), this.size, this.world.entities[i].pos, this.world.entities[i].size)) {
@@ -132,5 +122,13 @@ class ControllerEntity extends Entity {
       }
     }
     return true;
+  }
+
+  dropItem() {
+    this.droppedItem = true;
+    var dropPos = this.pos.subtract(this.world.pos);
+    // need to re sort entities list by z index after this
+    this.world.entities.push( new ActionEntity( 0, this.inventory[this.inventoryPos], dropPos, vec2(0.5,0.5), rgb(1,1,0,1), this.world, "interact", this.world.actions["ItemPickupAction"] ) );
+    this.inventory.splice(this.inventoryPos, 1);
   }
 }
