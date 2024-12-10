@@ -28,7 +28,7 @@ class MusicBoxUI extends EngineObject {
     this.entered = []
 
     this.startButton = this.player.pos.add(vec2(-0.05, 0.46)),
-    this.shedkey = vec2( 15.7, 6.7)
+    this.shedkey = vec2( 16.7, 6.7)
     this.shedkeySize = vec2( 1.8, 1.3)
 
     this.startButtonSize = vec2(0.6,0.6);
@@ -43,6 +43,8 @@ class MusicBoxUI extends EngineObject {
 
   render() {
     this.image.render();
+    // Uncomment to show shedkey clickbox
+    // drawRect(this.shedkey, this.shedkeySize, this.purple);
     
     if (this.playing){
       drawRect(this.keys[this.sequence[this.key]], this.keySize, this.purple);
