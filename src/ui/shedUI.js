@@ -5,11 +5,11 @@ class ShedUI extends EngineObject {
     this.world = triggerEntity.world;
     this.player = this.world.getEntityByHandle(this.world.player);
 
-    this.shelf = new SingleImage(vec2(450,679), this.player.pos, 10, images["shelf"]);
-    this.shelfEmpty = new SingleImage(vec2(450,679), this.player.pos, 10, images["shelfEmpty"]);
+    this.shelf = new SingleImage(vec2(2500,2000), this.player.pos, 18, images["shelf"]);
+    this.shelfEmpty = new SingleImage(vec2(2500,2000), this.player.pos, 18, images["shelfEmpty"]);
     
-    this.wood = this.player.pos.add(vec2(0, -4.2))
-    this.woodSize = vec2( 4.5, 1.0)
+    this.wood = vec2(14,3)
+    this.woodSize = vec2(5,1)
       
   }
 

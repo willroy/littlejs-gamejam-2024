@@ -1,6 +1,3 @@
-purple = rgb(0,1,0,1.0)
-
-
 class MusicBoxUI extends EngineObject {
   constructor(triggerEntity) {
     super()
@@ -40,13 +37,15 @@ class MusicBoxUI extends EngineObject {
     this.key = 0
     this.keyPressed = -1
     this.keytaken = false;
+
+    this.purple = rgb(0,1,0,0.5)
   }
 
   render() {
     this.image.render();
     
     if (this.playing){
-      drawRect(this.keys[this.sequence[this.key]], this.keySize, purple);
+      drawRect(this.keys[this.sequence[this.key]], this.keySize, this.purple);
       this.counter++
       if (this.counter >= 60){
         this.counter = 0
@@ -61,7 +60,7 @@ class MusicBoxUI extends EngineObject {
       }
     }
     else if(this.keyPressed >= 0){
-      drawRect(this.keys[this.keyPressed], this.keySize, purple);
+      drawRect(this.keys[this.keyPressed], this.keySize, this.purple);
       this.counter++
       if (this.counter >= 20){
         this.counter = 0

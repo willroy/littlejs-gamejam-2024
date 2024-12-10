@@ -14,8 +14,8 @@ var imageSources = [
   'assets/bridgeDone.png',
   'assets/endscreen.png',
   'assets/wood.png',
-  'assets/shelf-450x679.png',
-  'assets/shelfEmpty-450x679.png'
+  'assets/shelf.png',
+  'assets/shelfEmpty.png'
 ]
 
 var images = {
