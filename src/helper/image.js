@@ -6,12 +6,18 @@ class Image {
     this.worldSize = vec2((this.tileSize.x/this.tileSize.y), 1).multiply(vec2(scale,scale));
     this.imageID = imageID;
     this.visible = true;
+    this.color = null;
   }
 
   render() {
     if ( !this.visible ) return;
 
-    drawTile(this.pos, this.worldSize, this.image);
+    if ( this.color != null ) {
+      drawTile(this.pos, this.worldSize, this.image, this.color);
+    }
+    else {
+      drawTile(this.pos, this.worldSize, this.image);
+    }
   }
 
   update() {
