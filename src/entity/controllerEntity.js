@@ -4,8 +4,6 @@ class ControllerEntity extends Entity {
     this.pos = vec2(16,8)
 
     this.inventory = [];
-    this.inventoryPos = 0;
-    this.droppedItem = false;
 
     this.speed = 0.15;
 
@@ -56,7 +54,6 @@ class ControllerEntity extends Entity {
       for ( var i = 0; i < this.inventory.length; i++ ) {
         var itemHandle = this.inventory[i];
         var colour = rgb(1,1,1);
-        if ( this.inventoryPos == i ) colour = rgb(0.5,1,0.5);
         if ( this.world.items[itemHandle] ) {
           drawTextScreen(this.world.items[itemHandle]["name"], vec2(200, (60*i)+100), 16, colour);
           drawTextScreen(this.world.items[itemHandle]["description"], vec2(200, (60*i)+120), 12, colour);
@@ -74,19 +71,8 @@ class ControllerEntity extends Entity {
     if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+this.speed, this.pos.y) ) this.move(0 - this.speed, 0, "right")
     if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed) ) this.move(0, 0 - this.speed, "up")
     if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed) ) this.move(0, this.speed, "down")
+
     if ( !keyIsDown("ArrowLeft") && !keyIsDown("ArrowRight") && !keyIsDown("ArrowUp") && !keyIsDown("ArrowDown") ) this.animationIdle = true;
-
-    for ( var i = 0; i < 9; i++ ) {
-      if ( typeof this.inventory[i] !== 'undefined' && keyIsDown("Digit"+(i+1).toString()) ) {
-        this.inventoryPos = i;
-        break;
-      }
-    }
-
-    if ( !keyIsDown("KeyQ") ) this.droppedItem = false;
-    
-    // going to comment out for now because don't have world item images for every holdable item to place on ground
-    // if ( !this.droppedItem && keyIsDown("KeyQ") ) this.dropItem()
 
     this.animationCount = this.animationCount + 1;
     if ( this.animationCount >= this.animationSpeed && !this.animationIdle ) {
@@ -121,13 +107,5 @@ class ControllerEntity extends Entity {
       }
     }
     return true;
-  }
-
-  dropItem() {
-    this.droppedItem = true;
-    var dropPos = this.pos.subtract(this.world.pos);
-    // need to re sort entities list by z index after this
-    this.world.entities.push( new ActionEntity( 0, this.inventory[this.inventoryPos], dropPos, vec2(0.5,0.5), rgb(1,1,0,1), this.world, "interact", this.world.actions["ItemPickupAction"] ) );
-    this.inventory.splice(this.inventoryPos, 1);
   }
 }
