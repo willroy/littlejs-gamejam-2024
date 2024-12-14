@@ -38,6 +38,16 @@
     },
     {
         "zindex":0,
+        "handle": "squirrel-dialog",
+        "type":"ActionEntity",
+        "pos":[17.5,24.0],
+        "size":[3.0,3.0],
+        "rgba":[1,0,0,1],
+        "actionTrigger": "interact",
+        "action": "DialogAction"
+    },
+    {
+        "zindex":0,
         "handle": "fountain",
         "type":"ObjectEntity",
         "pos":[29.05,0.77],

@@ -13,6 +13,14 @@
     "colour": "165a91",
     "finishAction": "BuildBridgeAction"
   },
+  "squirrel-dialog": {
+    "dialog": [
+      "Hey! Could you help me with my music box?",
+      "I stored away my nuts, but I forgot the note order to unlock it!",
+      "If you can unlock it, you can take the key I found as a thank you"
+    ],
+    "colour": "165a91"
+  },
   "intro-dialog": {
     "dialog": [
       "Where are my friends?"
