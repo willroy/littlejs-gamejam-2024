@@ -80,7 +80,7 @@
         "size":[1,1],
         "rgba":[1,0,0,1],
         "actionTrigger": "collide",
-        "action": "IntroDialogAction"
+        "action": "IntroAction"
     },
     {
         "zindex":0,

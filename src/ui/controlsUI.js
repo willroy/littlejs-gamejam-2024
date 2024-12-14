@@ -13,10 +13,14 @@ class ControlsUI extends EngineObject {
   }
 
   update() {
-    if (keyWasReleased("Escape")) {
+    if (this.world.checkQuitKeys()) {
       display.quitUI();
       this.triggerEntity.triggered = false;
       this.destroy();
+      this.world.frozen = false;
+      var dialogAction = new DialogAction(this.triggerEntity);
+      this.triggerEntity.destroy();
+      dialogAction.trigger();
       return;
     }
   }

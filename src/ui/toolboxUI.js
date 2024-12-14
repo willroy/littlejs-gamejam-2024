@@ -49,7 +49,7 @@ class ToolboxUI extends EngineObject {
   }
 
   update() {
-    if (keyWasReleased("Escape")) {
+    if (this.world.checkQuitKeys()) {
       display.quitUI();
       this.triggerEntity.triggered = false;
       this.destroy();

@@ -14,7 +14,7 @@ class DialogEntity extends Entity {
   }
 
   render() {
-    if (this.eDown && !keyIsDown("KeyE")) {
+    if (this.eDown && !this.world.checkInteractKeysDown()) {
       this.eDown = false;
 
       if (this.line < this.lines.length) {
@@ -34,13 +34,13 @@ class DialogEntity extends Entity {
         }
 
         if ( this.finishAction ) new this.finishAction(this.triggerEntity).trigger();
-        if ( this.unTriggerOnFinish && !keyIsDown("KeyE") ) this.triggerEntity.triggered = false;
+        if ( this.unTriggerOnFinish && !this.world.checkInteractKeysDown() ) this.triggerEntity.triggered = false;
 
         return;
       }
     }
 
-    if (keyIsDown("KeyE")) this.eDown = true;
+    if (this.world.checkInteractKeysDown()) this.eDown = true;
 
     if (!this.eDown && 0 <= this.line && this.line < this.lines.length) {
       var textPos = this.triggerEntity.pos.add(vec2(0, 1));
@@ -51,7 +51,7 @@ class DialogEntity extends Entity {
       var boxPadding = vec2(0.4, 0.6);
 
       drawRect(boxPos, vec2(textWidth, textHeight).add(boxPadding), this.rgba);
-      drawText(this.lines[this.line], textPos, this.fontSize, (0, 1, 0, 1), 0.1, this.rgba);
+      drawText(this.lines[this.line], textPos, this.fontSize, (0,0,0,1));
     }
   }
 

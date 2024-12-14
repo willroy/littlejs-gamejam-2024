@@ -11,8 +11,7 @@ class World {
     this.actions = {
       "DialogAction": DialogAction,
       "ItemPickupAction": ItemPickupAction,
-      "IntroDialogAction": IntroDialogAction,
-      "ControlsAction": ControlsAction,
+      "IntroAction": IntroAction,
       "FountainDialogAction": FountainDialogAction,
       "BeaverDialogAction": BeaverDialogAction,
       "BuildBridgeAction": BuildBridgeAction,
@@ -208,5 +207,26 @@ class World {
       }
     }
     return null;
+  }
+
+  checkInteractKeys() {
+    if ( keyWasReleased("KeyE") || keyWasReleased("KeyQ") || keyWasReleased("Escape") || keyWasReleased("Space") || keyWasReleased("Enter") ) {
+      return true;
+    }
+    return false;
+  }
+
+  checkInteractKeysDown() {
+    if ( keyIsDown("KeyE") || keyIsDown("KeyQ") || keyIsDown("Escape") || keyIsDown("Space") || keyIsDown("Enter") ) {
+      return true;
+    }
+    return false;
+  }
+
+  checkQuitKeys() {
+    if ( keyWasReleased("Escape") || keyWasReleased("Backspace") || keyWasReleased("KeyQ") || keyWasReleased("Backquote") ) {
+      return true;
+    }
+    return false;
   }
 }

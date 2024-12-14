@@ -17,8 +17,7 @@
     "dialog": [
       "Where are my friends?"
     ],
-    "colour": "165a91",
-    "finishAction": "ControlsAction"
+    "colour": "165a91"
   },
   "fountain-dialog-empty": {
     "dialog": [

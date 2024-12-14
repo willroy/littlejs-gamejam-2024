@@ -43,7 +43,7 @@ class ActionEntity extends Entity {
 
     var triggerAction = false;
 
-    if ( this.unTriggerOnRelease && !keyIsDown("KeyE") ) this.triggered = false;
+    if ( this.unTriggerOnRelease && !this.world.checkInteractKeysDown() ) this.triggered = false;
 
     if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) triggerAction = true;
     if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) {
@@ -82,6 +82,6 @@ class ActionEntity extends Entity {
   }
 
   interactTrigger() {
-    return this.collideTrigger() && keyIsDown("KeyE")
+    return this.collideTrigger() && this.world.checkInteractKeysDown()
   }
 }
