@@ -47,6 +47,9 @@ class FishingMinigameUI {
   }
 
   update() {
+
+    // start game countdown
+
     if ( this.startTimer == true ) {
       this.startTimerTick = this.startTimerTick + 1
       if ( this.startTimerTick > this.startTimerSpeed ) {
@@ -58,6 +61,8 @@ class FishingMinigameUI {
       }
       return;
     }
+
+    // gane clock timer
 
     this.timerTick = this.timerTick + 1
     if ( this.timerTick > this.timerSpeed ) {
@@ -74,11 +79,15 @@ class FishingMinigameUI {
       this.timer = new SpriteSheetImage(vec2(100*this.timerCount,0), vec2(100,100), this.timerPos, 1, images["fishingMinigame_timer"]);
     }
 
+    // fill progress bar if mouse on fish
+
     if ( mousePos.distanceSquared(this.fishPos) < 0.4 && this.progressBar.worldSize.y < 10.7 ) {
       this.progressBarTick = this.progressBarTick + 1
       this.progressBar.worldSize.y = this.progressBar.worldSize.y + (this.progressBarTick/10000)
       this.progressBar.pos.y = this.progressBar.pos.y + ((this.progressBarTick/10000)/2.4)
     }
+
+    // finish if progress bar is full
 
     if ( this.progressBar.worldSize.y >= 10.7 ) {
       this.world.frozen = false;
@@ -89,6 +98,8 @@ class FishingMinigameUI {
       this.player.inventory.push("fish")
       display.quitUI();
     }
+
+    // fish move logic
 
     if ( this.fishMoving ) {
       var scaledFishDir = vec2(0,0)
