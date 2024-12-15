@@ -40,7 +40,10 @@ class ControllerEntity extends Entity {
     this.animationCount = 0;
     this.animationStep = 0;
     this.animationSpeed = 15;
-    this.animationIdle = false
+    this.animationIdle = false;
+
+    this.fishingRod = new FishingRodUI(this);
+    this.fishingRodOut = false;
   }
 
   render() {
@@ -61,6 +64,8 @@ class ControllerEntity extends Entity {
         }
       }
     }
+
+    if ( this.fishingRodOut ) this.fishingRod.render();
   }
 
   update() {
@@ -91,6 +96,11 @@ class ControllerEntity extends Entity {
       this.image = new SpriteSheetImage(animationStepXY, vec2(this.imageinfo[1], this.imageinfo[2]), this.pos, this.imageinfo[3], images[this.imageinfo[0]]);
       this.animationStep = this.animationStep + 1;
     }
+
+    if ( this.fishingRodOut ) this.fishingRod.update();
+
+    if ( keyWasReleased("KeyF") && !this.fishingRodOut ) this.fishingRodOut = true;
+    else if ( keyWasReleased("KeyF") && this.fishingRodOut ) this.fishingRodOut = false;
   }
 
   move(xdiff, ydiff, dirKeys, dir) {
@@ -99,6 +109,7 @@ class ControllerEntity extends Entity {
     if ( this.dirKeys.toString() != dirKeys.toString() ) {
       this.dir = dir;
       this.dirKeys = dirKeys;
+      this.fishingRod.changeDir(this.dir);
       this.animationCount = 0;
       this.animationStep = 0;
       var animationStepXY = vec2(this.animationSteps[this.dir][this.animationStep][0], this.animationSteps[this.dir][this.animationStep][1])

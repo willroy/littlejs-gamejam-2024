@@ -28,7 +28,7 @@ class Image {
 class SingleImage extends Image {
   constructor(tileSize, pos, scale, imageID) {
     super(vec2(0,0), tileSize, pos, scale, imageID);
-    
+
     this.image = new TileInfo(this.tilePos, this.tileSize, this.imageID);
   }
 

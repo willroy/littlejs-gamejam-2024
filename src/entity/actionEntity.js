@@ -54,6 +54,8 @@ class ActionEntity extends Entity {
 
     if ( triggerAction ) new this.action(this).trigger();
 
+    // add visible method onto controllerEntity class and have this only update if animation is actually visible
+
     this.animationCount = this.animationCount + 1;
     if ( this.animationCount >= this.animationSpeed ) {
       this.animationCount = 0;

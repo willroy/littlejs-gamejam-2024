@@ -17,7 +17,8 @@ var imageSources = [
   'assets/shelf.png',
   'assets/shelfEmpty.png',
   'assets/controls.png',
-  'assets/interact.png'
+  'assets/interact.png',
+  'assets/fishingPole.png'
 ]
 
 var images = {
@@ -44,7 +45,8 @@ var images = {
   "shelf": 20,
   "shelfEmpty": 21,
   "controls": 22,
-  "interact": 23
+  "interact": 23,
+  "fishingRod": 24
 }
 
 var gameVariables = {}
