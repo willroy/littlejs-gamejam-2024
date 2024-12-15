@@ -96,6 +96,8 @@ class World {
 
   renderPost() {
     this.backgroundOver.render();
+
+    for ( entity in this.entites ) { entity.postRender(); }
   }
 
   update() {

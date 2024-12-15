@@ -71,6 +71,8 @@ class ControllerEntity extends Entity {
   update() {
     super.update();
 
+    if ( this.fishingRodOut ) this.fishingRod.update();
+
     if (this.world.frozen) return;
 
     var dirKeys = [];
@@ -96,8 +98,6 @@ class ControllerEntity extends Entity {
       this.image = new SpriteSheetImage(animationStepXY, vec2(this.imageinfo[1], this.imageinfo[2]), this.pos, this.imageinfo[3], images[this.imageinfo[0]]);
       this.animationStep = this.animationStep + 1;
     }
-
-    if ( this.fishingRodOut ) this.fishingRod.update();
 
     if ( keyWasReleased("KeyF") && !this.fishingRodOut ) this.fishingRodOut = true;
     else if ( keyWasReleased("KeyF") && this.fishingRodOut ) this.fishingRodOut = false;
