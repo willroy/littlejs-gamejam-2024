@@ -13,7 +13,7 @@ class FishingRodUI {
 
     this.fishing = false;
     this.bobberLanded = false;
-    this.bobberPos = vec2(this.player.pos["x"], this.player.pos["y"]-1);
+    this.bobberPos = vec2(this.player.pos.x, this.player.pos.y-1);
   }
 
   render() {
@@ -40,7 +40,7 @@ class FishingRodUI {
     if ( this.world.checkInteractKeysDown() && !this.fishing && !this.resetBobber) {
       this.fishing = true;
       this.world.frozen = true;
-      this.bobberPos = vec2(this.player.pos["x"], this.player.pos["y"]-1);
+      this.bobberPos = vec2(this.player.pos.x, this.player.pos.y-1);
     }
 
     if ( this.world.checkInteractKeysDown() && this.fishing && !this.bobberLanded && !this.resetBobber ) {
@@ -49,8 +49,8 @@ class FishingRodUI {
       if ( this.dir == "up" ) movement = vec2(0,0.1);
       if ( this.dir == "right" ) movement = vec2(0.1,0);
       if ( this.dir == "left" ) movement = vec2(-0.1,0);
-      this.bobberPos["x"] = this.bobberPos["x"] + movement["x"];
-      this.bobberPos["y"] = this.bobberPos["y"] + movement["y"];
+      this.bobberPos.x = this.bobberPos.x + movement.x;
+      this.bobberPos.y = this.bobberPos.y + movement.y;
     }
 
     if ( this.world.checkInteractKeys() && this.fishing ) {

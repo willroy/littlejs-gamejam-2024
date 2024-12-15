@@ -20,7 +20,8 @@ class World {
       "FountainLeverAction": FountainLeverAction,
       "GateAction": GateAction,
       "ShedKeyAction": ShedKeyAction,
-      "EndScreenAction": EndScreenAction
+      "EndScreenAction": EndScreenAction,
+      "FishingAction": FishingAction
     }
 
     this.loadData();

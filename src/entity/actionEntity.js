@@ -46,13 +46,15 @@ class ActionEntity extends Entity {
     if ( this.unTriggerOnRelease && !this.world.checkInteractKeysDown() ) this.triggered = false;
 
     if ( !this.triggered && this.actionTrigger == "collide" && this.collideTrigger() ) triggerAction = true;
-    if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) {
-      console.log("Interacting with " + this.action.name)
-      triggerAction = true;
-    }
+    if ( !this.triggered && this.actionTrigger == "interact" && this.interactTrigger() ) triggerAction = true;
+    if ( !this.triggered && this.actionTrigger == "bobber" && this.bobberTrigger() ) triggerAction = true;
     // if ( !this.triggered && this.actionTrigger == "proximity" && this.proximityTrigger() ) triggerAction = true;
 
-    if ( triggerAction ) new this.action(this).trigger();
+    if ( triggerAction ) {
+      var player = this.world.getEntityByHandle(this.world.player);
+      player.fishingRodOut = false;
+      new this.action(this).trigger();
+    }
 
     // add visible method onto controllerEntity class and have this only update if animation is actually visible
 
@@ -68,22 +70,25 @@ class ActionEntity extends Entity {
   }
 
   collideTrigger() {
-    const collisionTypes = ["ControllerEntity"]
-    for (var i=0; i<this.world.entities.length;i++) {
-      var entityType = this.world.entities[i].constructor.name;
-      var isAnotherEntity = this.world.entities[i] !== this;
-      var isSupportedEntityType = collisionTypes.includes(entityType);
-      var overlaps = isOverlapping(vec2(this.pos.x, this.pos.y), this.size, this.world.entities[i].pos, this.world.entities[i].size);
+    var player = this.world.getEntityByHandle(this.world.player);
 
-      if (isAnotherEntity && isSupportedEntityType && overlaps) {
-        return true;
-      }
-    }
+    if (isOverlapping(vec2(this.pos.x, this.pos.y), this.size, player.pos, player.size)) return true;
 
     return false;
   }
 
   interactTrigger() {
     return this.collideTrigger() && this.world.checkInteractKeysDown()
+  }
+
+  bobberTrigger() {
+    var player = this.world.getEntityByHandle(this.world.player);
+
+    if ( !player.fishingRod ) return false;
+    if ( !player.fishingRod.bobberLanded ) return false;
+
+    if (isOverlapping(vec2(this.pos.x, this.pos.y), this.size, player.fishingRod.bobberPos, vec2(0.3,0.3))) return true;
+
+    return false;
   }
 }

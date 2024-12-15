@@ -193,6 +193,17 @@
     },
     {
         "zindex":0,
+        "handle": "fish",
+        "type":"ActionEntity",
+        "pos":[2.7520833333333226,20.060416666666683],
+        "size":[0.3,0.3],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "bobber",
+        "action": "FishingAction",
+        "image":["fish",44,78,1]
+    },
+    {
+        "zindex":0,
         "handle": "bridgeBlocker",
         "type":"ObjectEntity",
         "pos":[5.76250000000001,-24.460416666666585],
