@@ -1,6 +1,5 @@
-class ToolboxUI extends EngineObject {
+class ToolboxUI {
   constructor(triggerEntity) {
-    super()
     this.triggerEntity = triggerEntity;
     this.world = triggerEntity.world;
     this.player = this.world.getEntityByHandle(this.world.player);
@@ -52,7 +51,6 @@ class ToolboxUI extends EngineObject {
     if (this.world.checkQuitKeys()) {
       display.quitUI();
       this.triggerEntity.triggered = false;
-      this.destroy();
       return;
     }
 

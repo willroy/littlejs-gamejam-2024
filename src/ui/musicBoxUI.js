@@ -1,6 +1,5 @@
-class MusicBoxUI extends EngineObject {
+class MusicBoxUI {
   constructor(triggerEntity) {
-    super()
     this.triggerEntity = triggerEntity;
     this.world = triggerEntity.world;
     this.player = this.world.getEntityByHandle(this.world.player);
@@ -75,7 +74,6 @@ class MusicBoxUI extends EngineObject {
     if (this.world.checkQuitKeys()) {
       display.quitUI();
       this.triggerEntity.triggered = false;
-      this.destroy();
       return;
     }
 

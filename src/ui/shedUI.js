@@ -1,6 +1,5 @@
-class ShedUI extends EngineObject {
+class ShedUI {
   constructor(triggerEntity) {
-    super()
     this.triggerEntity = triggerEntity;
     this.world = triggerEntity.world;
     this.player = this.world.getEntityByHandle(this.world.player);
@@ -23,7 +22,6 @@ class ShedUI extends EngineObject {
     if (this.world.checkQuitKeys()) {
       display.quitUI();
       this.triggerEntity.triggered = false;
-      this.destroy();
       return;
     }
 

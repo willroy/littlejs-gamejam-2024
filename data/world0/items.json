@@ -30,5 +30,9 @@
 	"gateKey": {
 		"name": "Gate Key",
 		"description": "This must be the key for the park exit!"
+	},
+	"fish": {
+		"name": "Fish",
+		"description": "A single fishy"
 	}
 }

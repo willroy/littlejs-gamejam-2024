@@ -32,7 +32,6 @@ class FishingRodUI {
   update() {                                                                                              
     if ( keyIsDown("KeyF") && this.player.fishingRodReady ) {
       display.quitUI();
-      this.destroy();
       return;
     }
 

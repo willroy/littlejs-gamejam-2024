@@ -23,10 +23,10 @@ class Display {
   }
 
   renderPost() {
+    this.loaded.renderPost();
+
     // loaded UI
     if ( this.loadedUI ) this.loadedUI.render();
-
-    this.loaded.renderPost();
 
     // overlay
     drawRect(vec2(0, 32), vec2(100, 34), rgb(0.212, 0.325, 0.412));

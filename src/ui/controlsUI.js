@@ -1,6 +1,5 @@
-class ControlsUI extends EngineObject {
+class ControlsUI {
   constructor(triggerEntity) {
-    super()
     this.triggerEntity = triggerEntity;
     this.world = triggerEntity.world;
     this.player = this.world.getEntityByHandle(this.world.player);
@@ -16,7 +15,6 @@ class ControlsUI extends EngineObject {
     if (this.world.checkQuitKeys()) {
       display.quitUI();
       this.triggerEntity.triggered = false;
-      this.destroy();
       this.world.frozen = false;
       var dialogAction = new DialogAction(this.triggerEntity);
       this.triggerEntity.destroy();
