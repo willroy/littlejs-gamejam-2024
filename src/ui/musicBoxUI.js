@@ -38,6 +38,21 @@ class MusicBoxUI {
     this.keytaken = false;
 
     this.purple = rgb(0,1,0,0.5)
+
+    this.animationSteps = [
+      [0,0],
+      [500,0],
+      [1000,0],
+      [1500,0]
+    ]
+
+    this.animationIdle = false;
+    this.animationCount = 0;
+    this.animationStep = 0;
+    this.animationSpeed = 20;
+
+    var animationStepXY = vec2(this.animationSteps[this.animationStep][0], this.animationSteps[this.animationStep][1]);
+    this.interactimage = new SpriteSheetImage(animationStepXY, vec2(500, 500), this.startButton, 1, images["interact"]);
   }
 
   render() {
@@ -45,28 +60,33 @@ class MusicBoxUI {
     // Uncomment to show shedkey clickbox
     // drawRect(this.shedkey, this.shedkeySize, this.purple);
     
-    if (this.playing){
+    if (this.playing) {
       drawRect(this.keys[this.sequence[this.key]], this.keySize, this.purple);
       this.counter++
-      if (this.counter >= 60){
+      if (this.counter >= 60) {
         this.counter = 0
         this.key++
-        console.log("Key: "+this.key)
-        console.log("Seq: "+this.sequence[this.key])
       }
-      if (this.key == this.sequence.length){
+      if (this.key == this.sequence.length) {
         this.key = 0
-        console.log("Stopping tune")
         this.playing = false
       }
     }
-    else if(this.keyPressed >= 0){
+    else if(this.keyPressed >= 0) {
       drawRect(this.keys[this.keyPressed], this.keySize, this.purple);
       this.counter++
-      if (this.counter >= 20){
+      if (this.counter >= 20) {
         this.counter = 0
         this.keyPressed = -1
       }
+    }
+
+    if ( this.interactimage ) {
+      var pos = this.startButton;
+      if ( this.opened ) pos = this.shedkey;
+      this.interactimage.pos = pos;
+      this.interactimage.color = rgb(1,1,1,0.9)
+      this.interactimage.render();
     }
   }
 
@@ -84,6 +104,7 @@ class MusicBoxUI {
         if ( isMouseIn(this.shedkey, this.shedkeySize) ) {
           this.image = this.musicBoxOpen;
           this.keytaken = true;
+          this.interactimage = null;
           new ItemPickupAction(this.triggerEntity, "shedkey").trigger();
         }
       }
@@ -94,40 +115,53 @@ class MusicBoxUI {
         if ( isMouseIn( this.startButton, this.startButtonSize ) ) {
           this.playTunes()
         }
-        for (var i=0; i < this.keys.length; i++){
-          if (isMouseIn(this.keys[i], this.keySize)){
+        for (var i=0; i < this.keys.length; i++) {
+          if (isMouseIn(this.keys[i], this.keySize)) {
             this.pressKey(i)
           }
         }
         this.mousePress = false;
       }
     }
+
+    if ( this.interactimage ) {
+      this.updateInteractIndicator()
+    }
   }
 
-  playTunes(){
-    console.log("Play Tunes...")
+  playTunes() {
     this.playing = true;
   }
 
-  pressKey(key){
+  pressKey(key) {
     this.keyPressed = key;
     // TODO: the sequence should get longer by 1 each time and succeed once the end has been reached
-    console.log("Key pressed: "+key)
-    if (key == this.sequence[this.entered.length]){
-      console.log("Well remembered!")
-      this.entered.push(key)
+    if (key == this.sequence[this.entered.length]) {
+      this.entered.push(key);
     }
     else {
-      console.log("Fail! Try again")
-      this.entered = []
+      this.entered = [];
     }
 
-    console.log("Entered: "+this.entered)
-    if (this.sequence.length == this.entered.length){
-      console.log("Well Done!")
-      this.entered = []
-      this.opened = true
-      this.image = this.musicBoxOpenWTool
+    if (this.sequence.length == this.entered.length) {
+      this.entered = [];
+      this.opened = true;
+      this.image = this.musicBoxOpenWTool;
+    }
+  }
+
+  updateInteractIndicator() {
+    if ( this.animationStep >= this.animationSteps.length ) { this.animationStep = 0 }
+    this.animationCount = this.animationCount + 1;
+    if ( this.animationCount >= this.animationSpeed ) {
+      this.animationCount = 0;
+
+      var animationStepXY = vec2(this.animationSteps[this.animationStep][0], this.animationSteps[this.animationStep][1]);
+      var pos = this.startButton;
+      if ( this.opened ) pos = this.shedkey;
+      console.log(pos)
+      this.interactimage = new SpriteSheetImage(animationStepXY, vec2(500, 500), pos, 1, images["interact"]);
+      this.animationStep = this.animationStep + 1;
     }
   }
 }
