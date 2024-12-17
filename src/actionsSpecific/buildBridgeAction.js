@@ -7,7 +7,7 @@ class BuildBridgeAction {
     trigger() {
         var player = this.world.getEntityByHandle(this.world.player);
         this.triggerEntity.destroy();
-        this.world.getEntityByHandle("bridgeBlocker").destroy()
+        this.world.getEntityByHandle("bridgeBlocker").destroy();
         player.inventory.splice(player.inventory.indexOf("wood1"), 1);
         player.inventory.splice(player.inventory.indexOf("wood2"), 1);
         player.inventory.splice(player.inventory.indexOf("wood3"), 1);

@@ -86,5 +86,29 @@
       "Now I can unlock it!"
     ],
     "colour": "165a91"
+  },
+  "cat-dialog": {
+    "dialog": [
+      "Hmmm I could really go for some fish right now......",
+      "Oh! Hey you! Get me 5 fish and I will open the maze for you",
+      "Here, take this fishing rod"
+    ],
+    "colour": "165a91",
+    "finishAction": "FishingGuideAction"
+  },
+  "cat-dialog-haveRod": {
+    "dialog": [
+      "Have you got my fish yet?",
+      "No? Oh.. Well here is the fishing guide again if you need it;"
+    ],
+    "colour": "165a91",
+    "finishAction": "FishingGuideAction"
+  },
+  "cat-dialog-haveFish": {
+    "dialog": [
+      "WOAH! Thanks for the fish ^O^",
+      "Here, i'll unlock the maze for you!"
+    ],
+    "colour": "165a91"
   }
 }

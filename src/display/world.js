@@ -21,7 +21,9 @@ class World {
       "GateAction": GateAction,
       "ShedKeyAction": ShedKeyAction,
       "EndScreenAction": EndScreenAction,
-      "FishingAction": FishingAction
+      "FishingAction": FishingAction,
+      "CatDialogAction": CatDialogAction,
+      "FishingGuideAction": FishingGuideAction
     }
 
     this.loadData();

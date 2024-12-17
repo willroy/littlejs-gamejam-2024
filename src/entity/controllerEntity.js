@@ -43,6 +43,7 @@ class ControllerEntity extends Entity {
     this.animationIdle = false;
 
     this.fishingRod = new FishingRodUI(this);
+    this.fishingRodEnabled = false;
     this.fishingRodOut = false;
   }
 
@@ -65,13 +66,13 @@ class ControllerEntity extends Entity {
       }
     }
 
-    if ( this.fishingRodOut ) this.fishingRod.render();
+    if ( this.fishingRodOut && this.fishingRodEnabled ) this.fishingRod.render();
   }
 
   update() {
     super.update();
 
-    if ( this.fishingRodOut ) this.fishingRod.update();
+    if ( this.fishingRodOut && this.fishingRodEnabled ) this.fishingRod.update();
 
     if (this.world.frozen) return;
 
@@ -99,8 +100,8 @@ class ControllerEntity extends Entity {
       this.animationStep = this.animationStep + 1;
     }
 
-    if ( keyWasReleased("KeyF") && !this.fishingRodOut ) this.fishingRodOut = true;
-    else if ( keyWasReleased("KeyF") && this.fishingRodOut ) this.fishingRodOut = false;
+    if ( keyWasReleased("KeyF") && !this.fishingRodOut && this.fishingRodEnabled ) this.fishingRodOut = true;
+    else if ( keyWasReleased("KeyF") && this.fishingRodOut && this.fishingRodEnabled ) this.fishingRodOut = false;
   }
 
   move(xdiff, ydiff, dirKeys, dir) {

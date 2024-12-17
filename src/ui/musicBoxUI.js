@@ -159,7 +159,6 @@ class MusicBoxUI {
       var animationStepXY = vec2(this.animationSteps[this.animationStep][0], this.animationSteps[this.animationStep][1]);
       var pos = this.startButton;
       if ( this.opened ) pos = this.shedkey;
-      console.log(pos)
       this.interactimage = new SpriteSheetImage(animationStepXY, vec2(500, 500), pos, 1, images["interact"]);
       this.animationStep = this.animationStep + 1;
     }

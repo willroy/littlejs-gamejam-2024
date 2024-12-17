@@ -95,7 +95,7 @@ class FishingMinigameUI {
       this.player.fishingRod.fishing = false;
       this.player.fishingRod.bobberLanded = false;
       this.triggerEntity.destroy();
-      this.player.inventory.push("fish")
+      this.player.inventory.push(this.triggerEntity.handle)
       display.quitUI();
     }
 

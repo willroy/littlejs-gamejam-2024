@@ -23,7 +23,9 @@ var imageSources = [
   'assets/fishingMinigame_background.png',
   'assets/fishingMinigame_fish.png',
   'assets/fishingMinigame_progressBar.png',
-  'assets/fishingMinigame_timer.png'
+  'assets/fishingMinigame_timer.png',
+  'assets/cat.png', 'assets/catFish.png',
+  'assets/fishingGuide.png'
 ]
 
 var images = {
@@ -56,7 +58,10 @@ var images = {
   "fishingMinigame_background": 26,
   "fishingMinigame_fish": 27,
   "fishingMinigame_progressBar": 28,
-  "fishingMinigame_timer": 29
+  "fishingMinigame_timer": 29,
+  "cat": 30,
+  "catFish": 31,
+  "fishingGuide": 32
 }
 
 var gameVariables = {}

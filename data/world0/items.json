@@ -31,7 +31,23 @@
 		"name": "Gate Key",
 		"description": "This must be the key for the park exit!"
 	},
-	"fish": {
+	"fish1": {
+		"name": "Fish",
+		"description": "A single fishy"
+	},
+	"fish2": {
+		"name": "Fish",
+		"description": "A single fishy"
+	},
+	"fish3": {
+		"name": "Fish",
+		"description": "A single fishy"
+	},
+	"fish4": {
+		"name": "Fish",
+		"description": "A single fishy"
+	},
+	"fish5": {
 		"name": "Fish",
 		"description": "A single fishy"
 	}

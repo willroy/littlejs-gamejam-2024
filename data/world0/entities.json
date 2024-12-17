@@ -193,7 +193,26 @@
     },
     {
         "zindex":0,
-        "handle": "fish",
+        "handle": "cat",
+        "type":"ObjectEntity",
+        "pos":[-28.443749999999753,-5.21041666666669],
+        "size":[2.0,2.0],
+        "rgba":[1,0,0,1],
+        "image":["cat",142,167,3]
+    },
+    {
+        "zindex":0,
+        "handle": "cat-dialog",
+        "type":"ActionEntity",
+        "pos":[-28.443749999999753,-5.21041666666669],
+        "size":[3.0,3.0],
+        "rgba":[1,0,0,1],
+        "actionTrigger": "interact",
+        "action": "CatDialogAction"
+    },
+    {
+        "zindex":0,
+        "handle": "fish1",
         "type":"ActionEntity",
         "pos":[2.7520833333333226,20.060416666666683],
         "size":[0.5,0.5],
@@ -201,6 +220,58 @@
         "actionTrigger": "bobber",
         "action": "FishingAction",
         "image":["fish",44,78,1]
+    },
+    {
+        "zindex":0,
+        "handle": "fish2",
+        "type":"ActionEntity",
+        "pos":[-4.577083333333318,-31.531249999999844],
+        "size":[0.5,0.5],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "bobber",
+        "action": "FishingAction",
+        "image":["fish",44,78,1]
+    },
+    {
+        "zindex":0,
+        "handle": "fish3",
+        "type":"ActionEntity",
+        "pos":[-24.847916666666503,17.61041666666668],
+        "size":[0.5,0.5],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "bobber",
+        "action": "FishingAction",
+        "image":["fish",44,78,1]
+    },
+    {
+        "zindex":0,
+        "handle": "fish4",
+        "type":"ActionEntity",
+        "pos":[-31.90208333333306,5.472916666666665],
+        "size":[0.5,0.5],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "bobber",
+        "action": "FishingAction",
+        "image":["fish",44,78,1]
+    },
+    {
+        "zindex":0,
+        "handle": "fish5",
+        "type":"ActionEntity",
+        "pos":[6.285416666666664,-17.077083333333317],
+        "size":[0.5,0.5],
+        "rgba":[0,0,0,1],
+        "actionTrigger": "bobber",
+        "action": "FishingAction",
+        "image":["fish",44,78,1]
+    },
+    {
+        "zindex":0,
+        "handle": "mazeBlocker",
+        "type":"ObjectEntity",
+        "pos":[-15.47499999999986,-9.827083333333345],
+        "size":[1,1],
+        "rgba":[0,0,0,1]
     },
     {
         "zindex":0,
