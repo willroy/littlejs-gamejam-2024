@@ -71,6 +71,8 @@ class ActionEntity extends Entity {
 
   collideTrigger() {
     var player = this.world.getEntityByHandle(this.world.player);
+    
+    if ( !player ) return false;
 
     if (isOverlapping(this.pos, this.size, player.pos, player.size)) return true;
 
@@ -84,6 +86,7 @@ class ActionEntity extends Entity {
   bobberTrigger() {
     var player = this.world.getEntityByHandle(this.world.player);
 
+    if ( !player ) return false;
     if ( !player.fishingRod ) return false;
     if ( !player.fishingRod.bobberLanded ) return false;
 

@@ -275,6 +275,15 @@
     },
     {
         "zindex":0,
+        "handle": "mazeBlockerImage",
+        "type":"Entity",
+        "pos":[-14.76249999999985,-5.960416666666684],
+        "size":[1,1],
+        "rgba":[0,0,0,1],
+        "image":["mazeBlocker",156,159,2.5]
+    },
+    {
+        "zindex":0,
         "handle": "bridgeBlocker",
         "type":"ObjectEntity",
         "pos":[5.76250000000001,-24.460416666666585],

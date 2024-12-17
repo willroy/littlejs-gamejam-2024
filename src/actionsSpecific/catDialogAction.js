@@ -13,6 +13,7 @@ class CatDialogAction {
       }
      if ( player.inventory.includes("fish1") && player.inventory.includes("fish2") && player.inventory.includes("fish3") && player.inventory.includes("fish4") && player.inventory.includes("fish5") ) {
         this.world.getEntityByHandle("mazeBlocker").destroy();
+        this.world.getEntityByHandle("mazeBlockerImage").destroy();
         player.inventory.splice(player.inventory.indexOf("fish1"), 1);
         player.inventory.splice(player.inventory.indexOf("fish2"), 1);
         player.inventory.splice(player.inventory.indexOf("fish3"), 1);
