@@ -8,8 +8,6 @@ class ShedKeyAction {
     var dialogAction = new DialogAction(this.triggerEntity);
     var player = this.world.getEntityByHandle(this.world.player);
 
-    console.log("TRIGGERED")
-
     this.triggerEntity.triggered = true;
     if (gameVariables["shedEmpty"]){
       dialogAction.dialogHandle = "shed-empty";
@@ -20,7 +18,7 @@ class ShedKeyAction {
       this.triggerEntity.unTriggerOnRelease = true;
       this.triggerEntity.world.frozen = true;
       gameVariables["shedKeyUsed"] = true
-      player.inventory.splice(player.inventory.indexOf("shedkey"), 1);
+      if (player.inventory.includes("shedkey")) player.inventory.splice(player.inventory.indexOf("shedkey"), 1);
       display.loadedUI = new ShedUI(this.triggerEntity);
     }
     else {
