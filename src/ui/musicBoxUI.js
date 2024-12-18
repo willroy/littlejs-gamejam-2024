@@ -106,6 +106,7 @@ class MusicBoxUI {
           this.keytaken = true;
           this.interactimage = null;
           new ItemPickupAction(this.triggerEntity, "shedkey").trigger();
+          gameVariables["musicBoxSolved"] = true;
         }
       }
     }

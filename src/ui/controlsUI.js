@@ -12,7 +12,7 @@ class ControlsUI {
   }
 
   update() {
-    if (this.world.checkQuitKeys()) {
+    if (mouseWasPressed(0)) {
       display.quitUI();
       this.triggerEntity.triggered = false;
       this.world.frozen = false;

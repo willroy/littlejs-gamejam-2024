@@ -21,6 +21,12 @@
     ],
     "colour": "165a91"
   },
+  "squirrel-dialog-solved": {
+    "dialog": [
+      "Thanks for helping with my music box!"
+    ],
+    "colour": "165a91"
+  },
   "intro-dialog": {
     "dialog": [
       "Where are my friends?"
@@ -108,6 +114,12 @@
     "dialog": [
       "WOAH! Thanks for the fish ^O^",
       "Here, i'll unlock the maze for you!"
+    ],
+    "colour": "165a91"
+  },
+  "cat-dialog-done": {
+    "dialog": [
+      "Thanks again for the fish!"
     ],
     "colour": "165a91"
   }

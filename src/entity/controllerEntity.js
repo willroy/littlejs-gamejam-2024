@@ -60,8 +60,7 @@ class ControllerEntity extends Entity {
         var itemHandle = this.inventory[i];
         var colour = rgb(1,1,1);
         if ( this.world.items[itemHandle] ) {
-          drawTextScreen(this.world.items[itemHandle]["name"], vec2(200, (60*i)+100), 16, colour);
-          drawTextScreen(this.world.items[itemHandle]["description"], vec2(200, (60*i)+120), 12, colour);
+          drawTextScreen(this.world.items[itemHandle]["name"], vec2(200, (40*i)+100), 16, colour);
         }
       }
     }

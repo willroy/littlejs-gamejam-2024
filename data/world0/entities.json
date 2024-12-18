@@ -44,7 +44,7 @@
         "size":[3.0,3.0],
         "rgba":[1,0,0,1],
         "actionTrigger": "interact",
-        "action": "DialogAction"
+        "action": "SquirrelDialogAction"
     },
     {
         "zindex":0,
@@ -296,6 +296,13 @@
         "type":"ObjectEntity",
         "pos":[-9.931249999999942,33.231249999999946],
         "size":[2.200000000000002,1.2000000000000002],
+        "rgba":[0,0,0,1]
+    },
+    {
+        "zindex":0,
+        "type":"ObjectEntity",
+        "pos":[-14.927083333333197,-3.9895833333333535],
+        "size":[1.8000000000000007,3.100000000000002],
         "rgba":[0,0,0,1]
     },
     {

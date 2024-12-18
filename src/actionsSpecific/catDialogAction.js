@@ -11,7 +11,7 @@ class CatDialogAction {
       if ( this.player.fishingRodEnabled ) {
         dialogAction.dialogHandle = "cat-dialog-haveRod";
       }
-     if ( player.inventory.includes("fish1") && player.inventory.includes("fish2") && player.inventory.includes("fish3") && player.inventory.includes("fish4") && player.inventory.includes("fish5") ) {
+      if ( player.inventory.includes("fish1") && player.inventory.includes("fish2") && player.inventory.includes("fish3") && player.inventory.includes("fish4") && player.inventory.includes("fish5") ) {
         this.world.getEntityByHandle("mazeBlocker").destroy();
         this.world.getEntityByHandle("mazeBlockerImage").destroy();
         player.inventory.splice(player.inventory.indexOf("fish1"), 1);
@@ -20,7 +20,11 @@ class CatDialogAction {
         player.inventory.splice(player.inventory.indexOf("fish4"), 1);
         player.inventory.splice(player.inventory.indexOf("fish5"), 1);
         dialogAction.dialogHandle = "cat-dialog-haveFish";
-      } 
+        gameVariables["mazeUnblocked"] = true;
+      }
+      else if ( gameVariables["mazeUnblocked"] ) {
+        dialogAction.dialogHandle = "cat-dialog-done";
+      }
       dialogAction.trigger();
     }
 }

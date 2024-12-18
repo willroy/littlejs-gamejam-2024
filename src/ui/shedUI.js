@@ -7,15 +7,15 @@ class ShedUI {
     this.shelf = new SingleImage(vec2(2500,2000), this.player.pos, 18, images["shelf"]);
     this.shelfEmpty = new SingleImage(vec2(2500,2000), this.player.pos, 18, images["shelfEmpty"]);
     
-    this.wood = vec2(16,2)
-    this.woodSize = vec2(5.2,1)
+    this.wood = vec2(15.9,2.5)
+    this.woodSize = vec2(5.5,1.3)
   }
 
   render() {
     // Uncomment to show wood clickbox
-    // drawRect(this.wood, this.woodSize, rgb(0,1,0,0.5));
     var image = gameVariables["shedEmpty"] ? this.shelfEmpty : this.shelf;
     image.render();
+    // drawRect(this.wood, this.woodSize, rgb(0,1,0,0.5));
   }
 
   update() {

@@ -23,7 +23,8 @@ class World {
       "EndScreenAction": EndScreenAction,
       "FishingAction": FishingAction,
       "CatDialogAction": CatDialogAction,
-      "FishingGuideAction": FishingGuideAction
+      "FishingGuideAction": FishingGuideAction,
+      "SquirrelDialogAction": SquirrelDialogAction
     }
 
     this.loadData();
