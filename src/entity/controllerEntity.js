@@ -82,10 +82,10 @@ class ControllerEntity extends Entity {
     if ( keyIsDown("ArrowUp") ) dirKeys.push("up");
     if ( keyIsDown("ArrowDown") ) dirKeys.push("down");
 
-    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-this.speed, this.pos.y) ) this.move(this.speed, 0, dirKeys, "left")
-    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+this.speed, this.pos.y) ) this.move(0 - this.speed, 0, dirKeys, "right")
-    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed) ) this.move(0, 0 - this.speed, dirKeys, "up")
-    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed) ) this.move(0, this.speed, dirKeys, "down")
+    if ( keyIsDown("ArrowLeft") && this.collisonCheck(this.pos.x-this.speed, this.pos.y, dirKeys, "left") ) this.move(this.speed, 0)
+    if ( keyIsDown("ArrowRight") && this.collisonCheck(this.pos.x+this.speed, this.pos.y, dirKeys, "right") ) this.move(0 - this.speed, 0)
+    if ( keyIsDown("ArrowUp") && this.collisonCheck(this.pos.x, this.pos.y+this.speed, dirKeys, "up") ) this.move(0, 0 - this.speed)
+    if ( keyIsDown("ArrowDown") && this.collisonCheck(this.pos.x, this.pos.y-this.speed, dirKeys, "down") ) this.move(0, this.speed)
 
     if ( !keyIsDown("ArrowLeft") && !keyIsDown("ArrowRight") && !keyIsDown("ArrowUp") && !keyIsDown("ArrowDown") ) this.animationIdle = true;
 
@@ -103,9 +103,13 @@ class ControllerEntity extends Entity {
     else if ( keyWasReleased("KeyF") && this.fishingRodOut && this.fishingRodEnabled ) this.fishingRodOut = false;
   }
 
-  move(xdiff, ydiff, dirKeys, dir) {
+  move(xdiff, ydiff) {
     this.world.reposition(xdiff, ydiff);
     this.animationIdle = false;
+    
+  }
+
+  collisonCheck(newX, newY, dirKeys, dir) {
     if ( this.dirKeys.toString() != dirKeys.toString() ) {
       this.dir = dir;
       this.dirKeys = dirKeys;
@@ -116,9 +120,7 @@ class ControllerEntity extends Entity {
       this.image = new SpriteSheetImage(animationStepXY, vec2(this.imageinfo[1], this.imageinfo[2]), this.pos, this.imageinfo[3], images[this.imageinfo[0]]);
       this.animationStep = this.animationStep + 1;
     }
-  }
 
-  collisonCheck(newX, newY) {
     const collisionTypes = ["ObjectEntity"];
     for (var i=0; i<this.world.entities.length;i++) {
       var entityType = this.world.entities[i].constructor.name;
