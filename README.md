@@ -1,6 +1,5 @@
 Game Shortcuts:
 
-- [q] - drop selected item
 - [esc] - back / quit menu
 - [wasd/arrowkeys] - movement
 
