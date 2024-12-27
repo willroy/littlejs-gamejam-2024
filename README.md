@@ -1,6 +1,5 @@
 Game Shortcuts:
 
-- [0-9] - switch inventory slot
 - [q] - drop selected item
 - [esc] - back / quit menu
 - [wasd/arrowkeys] - movement
